@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Dr. Demo · Agendado (Demo interactiva)</title>
+<title>Agendado · Demo Interactiva</title>
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#1a4f8a">
 <meta name="mobile-web-app-capable" content="yes">
@@ -15,16 +15,16 @@
 <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png">
 <!-- ── OPEN GRAPH / WhatsApp ── -->
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://agendado-demo.vercel.app" />
-<meta property="og:title" content="Demo Agendado · Así funciona tu agenda online" />
-<meta property="og:description" content="Probá en vivo cómo funciona Agendado: reserva de turnos online en segundos, sin llamadas ni WhatsApp." />
+<meta property="og:url" content="https://demo.agendado.link" />
+<meta property="og:title" content="Agendado · Demo Interactiva · Tu agenda online" />
+<meta property="og:description" content="Probá Agendado en vivo. Así funciona tu agenda online personalizada. Sin llamadas, sin complicaciones." />
 <meta property="og:image" content="https://www.agendado.link/og-image.png" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
 <meta property="og:locale" content="es_AR" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Demo Agendado · Así funciona tu agenda online" />
-<meta name="twitter:description" content="Probá en vivo cómo funciona Agendado: reserva de turnos online en segundos, sin llamadas ni WhatsApp." />
+<meta name="twitter:title" content="Agendado · Demo Interactiva · Tu agenda online" />
+<meta name="twitter:description" content="Probá Agendado en vivo. Así funciona tu agenda online personalizada. Sin llamadas, sin complicaciones." />
 <meta name="twitter:image" content="https://www.agendado.link/og-image.png" />
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
 <style>
@@ -239,8 +239,8 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--snow);color:var
 .login-hint strong{color:var(--blue);}
 .login-error{font-size:12px;color:var(--rose);margin-top:8px;display:none;}
 
-.panel-header{background:var(--white);border-bottom:1px solid var(--border);padding:16px 18px;display:flex;align-items:center;justify-content:space-between;box-shadow:var(--shadow-sm);position:sticky;top:0;z-index:100;}
-.panel-logo{font-family:'Lora',serif;font-size:20px;color:var(--blue);}
+.panel-header{background:rgba(255,255,255,.97);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:0 18px;height:52px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 1px 4px rgba(26,40,80,.06);position:sticky;top:0;z-index:200;}
+.panel-logo{display:inline-flex;align-items:center;gap:8px;text-decoration:none;}
 .btn-logout{font-size:11px;font-weight:600;color:var(--text-dim);background:var(--pearl);border:1px solid var(--border);padding:5px 12px;border-radius:20px;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;transition:all .2s;}
 .btn-logout:hover{border-color:var(--rose);color:var(--rose);}
 
@@ -250,7 +250,7 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--snow);color:var
 .ps-num{font-family:'Lora',serif;font-size:26px;color:var(--blue);line-height:1;}
 .ps-label{font-size:10px;color:var(--text-dim);margin-top:4px;}
 
-.panel-tabs{display:flex;background:var(--white);border-bottom:1px solid var(--border);overflow-x:auto;scrollbar-width:none;position:sticky;top:65px;z-index:90;box-shadow:var(--shadow-sm);}
+.panel-tabs{display:flex;background:var(--white);border-bottom:1px solid var(--border);overflow-x:auto;scrollbar-width:none;position:sticky;top:52px;z-index:90;box-shadow:var(--shadow-sm);}
 .panel-tabs::-webkit-scrollbar{display:none;}
 .ptab{flex-shrink:0;padding:14px 18px;font-size:12px;font-weight:600;letter-spacing:.3px;color:var(--text-dim);border:none;background:transparent;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;border-bottom:2px solid transparent;transition:all .2s;}
 .ptab.active{color:var(--blue);border-bottom-color:var(--blue);}
@@ -324,33 +324,6 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--snow);color:var
 .modal-sub{font-size:13px;color:var(--text-mid);margin-bottom:20px;}
 .modal-close{position:absolute;top:20px;right:20px;width:32px;height:32px;border-radius:50%;background:var(--snow);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:14px;color:var(--text-mid);}
 
-/* ── FREE COUNTER ── */
-.free-counter-wrap{margin:0 0 14px;padding:14px 16px;background:var(--white);border:1.5px solid var(--border);border-radius:12px;box-shadow:var(--shadow-sm);}
-.free-counter-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;}
-.free-counter-label{font-size:11px;font-weight:700;color:var(--text-mid);letter-spacing:.3px;text-transform:uppercase;}
-.free-counter-num{font-family:'DM Mono',monospace;font-size:13px;font-weight:700;color:var(--blue);}
-.free-bar-bg{height:7px;background:var(--pearl);border-radius:4px;overflow:hidden;}
-.free-bar-fill{height:100%;background:linear-gradient(90deg,var(--teal),var(--blue));border-radius:4px;transition:width .5s ease;}
-.free-bar-fill.warning{background:linear-gradient(90deg,#f59e0b,#ef4444);}
-.free-counter-sub{font-size:10px;color:var(--text-dim);margin-top:5px;}
-.free-blocked-banner{background:linear-gradient(135deg,#0f3060,#1a4f8a);border-radius:12px;padding:18px 20px;margin-bottom:14px;text-align:center;}
-.free-blocked-banner h4{font-size:14px;font-weight:700;color:#fff;margin-bottom:6px;}
-.free-blocked-banner p{font-size:12px;color:rgba(255,255,255,.75);margin-bottom:14px;line-height:1.5;}
-.free-blocked-banner a{display:inline-block;background:#fff;color:#1a4f8a;font-size:12px;font-weight:700;padding:10px 20px;border-radius:8px;text-decoration:none;}
-
-
-/* ── DÍAS ESPECIALES ── */
-.dias-esp-item{display:flex;gap:12px;align-items:flex-start;padding:12px 14px;background:var(--white);border:1px solid var(--border);border-radius:10px;margin-bottom:8px;position:relative;}
-.dias-esp-day{min-width:38px;height:38px;border-radius:8px;background:var(--blue-pale);border:1px solid rgba(26,79,138,.15);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;color:var(--blue);text-transform:uppercase;letter-spacing:.5px;flex-shrink:0;}
-.dias-esp-info{flex:1;}
-.dias-esp-prof{font-size:13px;font-weight:700;color:var(--text);margin-bottom:2px;}
-.dias-esp-spec{font-size:11px;color:var(--text-dim);}
-.dias-esp-note{font-size:11px;color:var(--text-mid);margin-top:3px;font-style:italic;}
-.dias-esp-del{position:absolute;top:8px;right:10px;background:none;border:none;color:var(--text-xdim);font-size:14px;cursor:pointer;padding:2px 6px;border-radius:6px;}
-.dias-esp-del:hover{color:var(--rose);background:var(--rose-pale);}
-.dias-esp-empty{font-size:12px;color:var(--text-dim);text-align:center;padding:16px;font-style:italic;}
-
-
 /* ── GESTIÓN DE DISPONIBILIDAD ── */
 .disp-tabs{display:flex;gap:6px;margin-bottom:14px;}
 .disp-tab{flex:1;padding:9px;border-radius:8px;border:1.5px solid var(--border);background:var(--white);font-family:'Plus Jakarta Sans',sans-serif;font-size:11px;font-weight:700;color:var(--text-dim);cursor:pointer;transition:all .2s;text-align:center;}
@@ -372,6 +345,52 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--snow);color:var
 .cal-day.bloqueado{background:var(--rose-pale)!important;border-color:rgba(225,29,72,.25)!important;color:var(--rose)!important;pointer-events:none!important;}
 .slot.franja-bloqueada{color:var(--border2);text-decoration:line-through;pointer-events:none;opacity:.45;border-style:dashed;border-color:rgba(217,119,6,.3);}
 
+
+/* ── FRANJA ROWS ── */
+.franja-row {
+  background: var(--snow);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px;
+  margin-bottom: 10px;
+  position: relative;
+}
+.franja-row-del {
+  position: absolute;
+  top: 8px; right: 8px;
+  background: none; border: none;
+  color: var(--text-xdim); font-size: 14px;
+  cursor: pointer; padding: 2px 6px;
+  border-radius: 6px; line-height: 1;
+}
+.franja-row-del:hover { color: var(--rose); background: var(--rose-pale); }
+
+
+/* ── DÍAS ESPECIALES ── */
+.dias-esp-item{display:flex;gap:12px;align-items:flex-start;padding:12px 14px;background:var(--white);border:1px solid var(--border);border-radius:10px;margin-bottom:8px;position:relative;}
+.dias-esp-day{min-width:38px;height:38px;border-radius:8px;background:var(--blue-pale);border:1px solid rgba(26,79,138,.15);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;color:var(--blue);text-transform:uppercase;letter-spacing:.5px;flex-shrink:0;}
+.dias-esp-info{flex:1;}
+.dias-esp-prof{font-size:13px;font-weight:700;color:var(--text);margin-bottom:2px;}
+.dias-esp-spec{font-size:11px;color:var(--text-dim);}
+.dias-esp-note{font-size:11px;color:var(--text-mid);margin-top:3px;font-style:italic;}
+.dias-esp-del{position:absolute;top:8px;right:10px;background:none;border:none;color:var(--text-xdim);font-size:14px;cursor:pointer;padding:2px 6px;border-radius:6px;}
+.dias-esp-del:hover{color:var(--rose);background:var(--rose-pale);}
+.dias-esp-empty{font-size:12px;color:var(--text-dim);text-align:center;padding:16px;font-style:italic;}
+
+
+/* ── WA OBLIGATORIO ── */
+.wpp-step{background:linear-gradient(135deg,rgba(37,211,102,.08),rgba(37,211,102,.04));border:1.5px solid rgba(37,211,102,.3);border-radius:14px;padding:18px 16px;margin-bottom:14px;text-align:center;}
+.wpp-step-label{font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#128C7E;margin-bottom:6px;}
+.wpp-step-title{font-size:14px;font-weight:700;color:var(--text);margin-bottom:12px;line-height:1.4;}
+.wpp-step-btn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:15px;background:#25D366;color:white;border:none;border-radius:12px;font-family:'Plus Jakarta Sans',sans-serif;font-size:15px;font-weight:700;text-decoration:none;box-shadow:0 4px 16px rgba(37,211,102,.35);transition:all .2s;}
+.wpp-step-btn:hover{background:#128C7E;transform:translateY(-1px);}
+.wpp-step-skip{font-size:11px;color:var(--text-dim);margin-top:10px;cursor:pointer;text-decoration:underline;display:block;}
+
+
+/* ── MODAL EDITAR TURNO ── */
+.btn-action.edit{border-color:rgba(26,79,138,.2);color:var(--blue);}
+.btn-action.edit:hover{background:var(--blue-pale);}
+
 </style>
 </head>
 <body>
@@ -383,47 +402,46 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--snow);color:var
 <div id="switch-outer" style="position:fixed;bottom:calc(var(--tab-h) + 14px + env(safe-area-inset-bottom));left:16px;z-index:150;">
   <button class="switch-btn" onclick="switchView()">
     <span id="switch-icon">🩺</span>
-    <span id="switch-label">Panel profesional</span>
+    <span id="switch-label">Panel médico</span>
   </button>
 </div>
 
 <!-- ══════════════ VISTA PACIENTE ══════════════ -->
 <div id="view-patient" class="active">
-  <!-- HEADER PACIENTE -->
-  <div style="position:sticky;top:0;z-index:200;background:rgba(255,255,255,.95);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:0 18px;height:52px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 1px 4px rgba(26,40,80,.06);">
-    <a href="#" style="display:inline-flex;align-items:center;gap:7px;text-decoration:none;">
-      <svg width="24" height="24" viewBox="0 0 52 52" fill="none">
-        <circle cx="26" cy="26" r="22" stroke="#dde3ef" stroke-width="1.5" fill="none"/>
-        <path d="M 26 4 A 22 22 0 0 1 48 26" stroke="#1a4f8a" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-        <path d="M 17 36 L 26 14 L 35 36" stroke="#1a2035" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M 20.5 28 L 31.5 28" stroke="#1a4f8a" stroke-width="2" stroke-linecap="round"/>
-        <circle cx="26" cy="14" r="2.5" fill="#1a4f8a"/>
-      </svg>
-      <span style="font-family:'Lora',serif;font-size:17px;font-weight:500;color:#1a2035;letter-spacing:-.4px;line-height:1;">Agend<em style="font-style:italic;color:#1a4f8a;">ado</em>.</span>
-    </a>
-    <span style="font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--text-dim);background:var(--pearl);border:1px solid var(--border);padding:3px 10px;border-radius:20px;">Tu agenda online</span>
-  </div>
   <!-- DEMO NOTICE -->
   <div style="background:linear-gradient(135deg,#0d9488,#1a4f8a);padding:10px 16px;text-align:center;position:sticky;top:0;z-index:300;">
     <span style="font-size:11px;font-weight:700;color:white;letter-spacing:.5px;">✦ DEMO INTERACTIVA · Los turnos aquí NO se guardan · </span>
-    <a href="https://wa.me/5493815420044?text=Hola%20Seba%2C%20quiero%20mi%20Agendado" target="_blank" style="font-size:11px;font-weight:700;color:rgba(255,255,255,.85);text-decoration:underline;">Quiero el mío →</a>
+    <a href="https://wa.me/5493816096063?text=Hola%20Seba%2C%20quiero%20mi%20Agendado" target="_blank" style="font-size:11px;font-weight:700;color:rgba(255,255,255,.85);text-decoration:underline;">Quiero el mío →</a>
   </div>
-
+  <!-- HEADER LOGO PACIENTE -->
+  <div style="position:sticky;top:40px;z-index:200;background:rgba(255,255,255,.97);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:0 18px;height:52px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 1px 4px rgba(26,40,80,.06);">
+    <a href="#" style="display:inline-flex;align-items:center;gap:8px;text-decoration:none;">
+      <svg width="28" height="28" viewBox="0 0 52 52" fill="none">
+        <circle cx="26" cy="26" r="22" stroke="#dde3ef" stroke-width="1.5" fill="none"/>
+        <path d="M 26 4 A 22 22 0 0 1 48 26" stroke="#1a4f8a" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        <path d="M 17 36 L 26 14 L 35 36" stroke="#1a2035" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M 20.5 28 L 31.5 28" stroke="#1a4f8a" stroke-width="2.5" stroke-linecap="round"/>
+        <circle cx="26" cy="14" r="3" fill="#1a4f8a"/>
+      </svg>
+      <span style="font-family:'Lora',serif;font-size:20px;font-weight:500;color:#1a2035;letter-spacing:-.5px;line-height:1;">Agend<em style="font-style:italic;color:#1a4f8a;">ado</em>.</span>
+    </a>
+    <span style="font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--text-dim);background:var(--pearl);border:1px solid var(--border);padding:3px 10px;border-radius:20px;">Tu agenda online</span>
+  </div>
 
   <div class="hero">
     <div class="avatar-wrap" onclick="document.getElementById('avatar-input').click()">
-      <div class="avatar-img" id="avatar-display">🦷</div>
+      <div class="avatar-img" id="avatar-display"><img src="data:image/jpeg;base64,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" style="width:100%;height:100%;object-fit:cover;border-radius:50%;"></div>
       <div class="avatar-edit">✏️</div>
       <input type="file" id="avatar-input" accept="image/*" onchange="handleAvatar(event)">
     </div>
     <div style="text-align:center;opacity:0;animation:fadeUp .4s .05s ease forwards">
-      <div class="hero-badge">🩺 Medicina General · Demo Agendado</div>
+      <div class="hero-badge">🦷 Odontología · Ortodoncia</div>
     </div>
-    <h1 class="hero-name">Dr. Demo · Agendado</h1>
+    <h1 class="hero-name">Lic. Demo · Psicóloga Clínica</h1>
     <div class="hero-spec" id="hero-spec-chips">
-      <span class="spec-chip">Medicina General</span>
+      <span class="spec-chip">Psicología Clínica</span>
+      <span class="spec-chip">MP 0000</span>
       <span class="spec-chip">Consultorios Demo</span>
-      <span class="spec-chip">Tucumán</span>
     </div>
     <div class="hero-stats">
       <div class="stat-item"><div class="stat-num" id="stat-turnos-mes">—</div><div class="stat-label">Turnos este mes</div></div>
@@ -444,7 +462,7 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--snow);color:var
     </button>
   </nav>
 
-  <a class="fab-wpp" href="https://wa.me/5493815420044?text=Hola%20Seba%2C%20quiero%20mi%20Agendado" target="_blank">💬</a>
+  <a class="fab-wpp" href="https://wa.me/5493816096063" target="_blank">💬</a>
 
   <!-- TURNO -->
   <div id="sec-turno" class="section active">
@@ -457,22 +475,9 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--snow);color:var
         </div>
       </div>
 
-            <div class="free-counter-wrap" id="free-counter-block">
-        <div class="free-counter-header">
-          <span class="free-counter-label">🎁 Plan Free · Turnos del mes</span>
-          <span class="free-counter-num" id="fc-num">—/15</span>
-        </div>
-        <div class="free-bar-bg"><div class="free-bar-fill" id="fc-bar" style="width:0%"></div></div>
-        <div class="free-counter-sub" id="fc-sub">Cargando...</div>
-      </div>
-      <div class="free-blocked-banner" id="free-blocked-banner" style="display:none">
-        <h4>🚀 ¡Límite del plan Free alcanzado!</h4>
-        <p>Este mes ya se usaron los 15 turnos incluidos. Para seguir reservando, el profesional debe pasar al plan Profesional.</p>
-        <a href="https://wa.me/5493815420044?text=Hola%20Seba%2C%20quiero%20pasar%20al%20plan%20Profesional%20de%20Agendado" target="_blank">💬 Contratar plan →</a>
-      </div>
       <p class="sec-eyebrow">Reservar turno</p>
       <h2 class="sec-title">Elegí tu día</h2>
-      <p class="sec-sub">Días disponibles en verde · Mañana: 09:00 a 12:00 hs</p>
+      <p class="sec-sub">Días disponibles en verde · Mañana: 08:30 a 11:30 · Tarde: 15:30 a 20:00 hs</p>
 
       <div class="card">
         <div class="cal-header">
@@ -524,18 +529,19 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--snow);color:var
           </div>
           <div class="form-group">
             <label class="form-label">Email</label>
-            <input class="form-input" type="email" placeholder="tu@email.com" id="inp-email" autocomplete="email">
+            <input class="form-input" type="email" placeholder="tu@email.com" id="inp-email" autocomplete="off">
           </div>
           <div class="form-group">
             <label class="form-label">Motivo de consulta</label>
             <select class="form-select" id="inp-motivo">
               <option value="">Seleccioná el motivo...</option>
-              <option>Consulta inicial / Evaluación</option>
-              <option>Cirugía programada</option>
-              <option>Control postoperatorio</option>
-              <option>Urgencia / Dolor</option>
-              <option>Extracción compleja</option>
-              <option>Implante</option>
+              <option>Primera consulta / Evaluación</option>
+              <option>Sesión individual</option>
+              <option>Terapia de pareja</option>
+              <option>Terapia familiar</option>
+              <option>Ansiedad / Estrés</option>
+              <option>Seguimiento</option>
+              <option>Urgencia</option>
               <option>Otro</option>
             </select>
           </div>
@@ -545,15 +551,32 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--snow);color:var
     </div>
 
     <div class="success-card" id="success-card">
+      <!-- Ícono y título -->
       <div class="success-icon-wrap">✓</div>
-      <h3>¡Turno confirmado!</h3>
+      <h3>¡Turno registrado!</h3>
       <p id="success-name-msg" style="margin-top:6px;font-size:15px;color:var(--text)"></p>
       <div class="success-detail" id="success-detail"></div>
-      <div class="notif-badge">
-        <span style="font-size:18px;flex-shrink:0">🔔</span>
-        <div class="nb-text">Recibirás un recordatorio 24 horas antes. El Dr. González Gómez fue notificado automáticamente.</div>
+
+      <!-- PASO OBLIGATORIO: WA -->
+      <div class="wpp-step">
+        <div class="wpp-step-label">📋 Paso final</div>
+        <div class="wpp-step-title">Enviá este mensaje para completar tu reserva de demo</div>
+        <a id="btn-wpp-confirm" href="#" target="_blank" class="wpp-step-btn" onclick="onWppSent()">
+          <span style="font-size:20px;">💬</span> Confirmar por WhatsApp
+        </a>
       </div>
-      <button class="btn-secondary" onclick="resetFlow()">Reservar otro turno</button>
+
+      <!-- Google Calendar — secundario -->
+      <a id="btn-gcal" href="#" target="_blank"
+        style="display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:12px;background:var(--blue-pale);color:var(--blue);border:1.5px solid rgba(26,79,138,.2);border-radius:12px;font-family:'Plus Jakarta Sans',sans-serif;font-size:13px;font-weight:700;text-decoration:none;margin-bottom:14px;">
+        <span style="font-size:16px;">📅</span> Agregar a Google Calendar
+      </a>
+
+      <!-- Volver — discreto, aparece después de enviar WA -->
+      <div id="btn-reset-wrap" style="display:none;">
+        <button class="btn-secondary" onclick="resetFlow()">Reservar otro turno</button>
+      </div>
+      <p id="skip-wpp" style="font-size:11px;color:var(--text-dim);margin-top:8px;cursor:pointer;text-decoration:underline;" onclick="showReset()">Omitir y volver al inicio</p>
     </div>
   </div>
 
@@ -561,25 +584,28 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--snow);color:var
   <div id="sec-contacto" class="section">
     <p class="sec-eyebrow">Contacto</p>
     <h2 class="sec-title">Encontranos</h2>
-    <p class="sec-sub">Clínica CEMIJ · Jujuy 173, Tucumán</p>
+    <p class="sec-sub">Consultorios Demo · Agendado · Tucumán</p>
     <div class="card">
-      <a class="contact-item" href="tel:+543815420044">
-        <div class="ci-icon">📞</div><div class="ci-info"><div class="ci-label">Teléfono</div><div class="ci-value">+54 381 529-3000</div></div><span class="ci-arrow">›</span>
+      <a class="contact-item" href="tel:+5493816096063">
+        <div class="ci-icon">📞</div><div class="ci-info"><div class="ci-label">Teléfono</div><div class="ci-value">+54 9 381 609-6063</div></div><span class="ci-arrow">›</span>
       </a>
-      <a class="contact-item" href="https://wa.me/5493815420044?text=Hola%20Seba%2C%20quiero%20mi%20Agendado" target="_blank">
-        <div class="ci-icon">💬</div><div class="ci-info"><div class="ci-label">WhatsApp</div><div class="ci-value">+54 381 529-3000</div></div><span class="ci-arrow">›</span>
+      <a class="contact-item" href="https://wa.me/5493816096063" target="_blank">
+        <div class="ci-icon">💬</div><div class="ci-info"><div class="ci-label">WhatsApp</div><div class="ci-value">+54 9 381 609-6063</div></div><span class="ci-arrow">›</span>
       </a>
-      <a class="contact-item" href="mailto:brusaje2213@hotmail.com">
-        <div class="ci-icon">✉️</div><div class="ci-info"><div class="ci-label">Email</div><div class="ci-value">brusaje2213@hotmail.com</div></div><span class="ci-arrow">›</span>
+      <a class="contact-item" href="mailto:hola@agendado.link">
+        <div class="ci-icon">✉️</div><div class="ci-info"><div class="ci-label">Email</div><div class="ci-value">hola@agendado.link</div></div><span class="ci-arrow">›</span>
       </a>
-      <a class="contact-item" href="https://maps.google.com/?q=Jujuy+173+Tucumán" target="_blank">
-        <div class="ci-icon">📍</div><div class="ci-info"><div class="ci-label">Consultorio</div><div class="ci-value">Jujuy 173 · Clínica CEMIJ · Tucumán</div></div><span class="ci-arrow">›</span>
+      <a class="contact-item" href="https://agendado.link" target="_blank">
+        <div class="ci-icon">🌐</div><div class="ci-info"><div class="ci-label">Web</div><div class="ci-value">agendado.link</div></div><span class="ci-arrow">›</span>
+      </a>
+      <a class="contact-item" href="#" target="_blank">
+        <div class="ci-icon">📍</div><div class="ci-info"><div class="ci-label">Consultorio</div><div class="ci-value" style="color:var(--text-dim);font-style:italic;">Tu dirección aquí</div></div><span class="ci-arrow">›</span>
       </a>
     </div>
     <p class="redes-label">Más opciones</p>
     <div class="redes-grid">
-      <a class="red-social" href="https://wa.me/5493815420044?text=Hola%20Seba%2C%20quiero%20mi%20Agendado" target="_blank"><span style="font-size:18px">💬</span> WhatsApp</a>
-      <a class="red-social" href="https://maps.google.com/?q=Jujuy+173+Tucumán" target="_blank"><span style="font-size:18px">🗺️</span> Cómo llegar</a>
+      <a class="red-social" href="https://wa.me/5493816096063" target="_blank"><span style="font-size:18px">💬</span> WhatsApp</a>
+      <a class="red-social" href="#" target="_blank"><span style="font-size:18px">🗺️</span> Cómo llegar</a>
     </div>
   </div>
 
@@ -587,30 +613,28 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--snow);color:var
   <div id="sec-info" class="section">
     <p class="sec-eyebrow">Información</p>
     <h2 class="sec-title">El consultorio</h2>
-    <p class="sec-sub">Clínica CEMIJ · Jujuy 173 · Tucumán</p>
+    <p class="sec-sub">Consultorios Demo · Agendado · Tucumán</p>
     <div class="info-block">
-      <h3>Dr. Bruno González Gómez</h3>
-      <p>Cirujano Dentomaxilar y Maxilofacial egresado de la Universidad Nacional de Tucumán, con más de 15 años de experiencia clínica. Especialista en cirugías complejas de boca, maxilares y estructuras faciales.</p>
+      <h3>Lic. Demo · Psicóloga Clínica</h3>
+      <p>Este es un perfil de demostración de Agendado. Tu perfil real tendrá tu nombre, foto, especialidad y datos de contacto propios. Configurado y listo en 48 horas.</p>
     </div>
     <div class="info-block">
       <h3>Especialidades</h3>
       <div style="margin-top:6px">
-        <span class="service-tag">🔬 Cirugía Dentomaxilar</span>
-        <span class="service-tag">🦴 Cirugía Maxilofacial</span>
-        <span class="service-tag">🔩 Implantes</span>
-        <span class="service-tag">🦷 Extracciones complejas</span>
-        <span class="service-tag">🩺 Patología oral</span>
-        <span class="service-tag">🚨 Urgencias</span>
+        <span class="service-tag">🧠 Psicología Clínica</span>
+        <span class="service-tag">💬 Terapia individual</span>
+        <span class="service-tag">👨‍👩‍👧 Terapia familiar</span>
+        <span class="service-tag">🌿 Ansiedad y estrés</span>
       </div>
     </div>
     <div class="info-block">
       <h3>Horarios de atención</h3>
       <div style="margin-top:8px">
-        <div class="horario-row"><span class="horario-dia">Lunes a Viernes</span><span class="horario-hora">16:00 – 19:30</span></div>
+        <div class="horario-row"><span class="horario-dia">Lunes a Viernes</span><span class="horario-hora">08:30 – 11:30 / 15:30 – 20:00</span></div>
         <div class="horario-row"><span class="horario-dia">Sábado</span><span class="horario-cerrado">Cerrado</span></div>
         <div class="horario-row"><span class="horario-dia">Domingo</span><span class="horario-cerrado">Cerrado</span></div>
       </div>
-      <p style="margin-top:12px;font-size:12px;color:var(--text-dim)">Turnos de 30 o 45 minutos según tipo de consulta.</p>
+      <p style="margin-top:12px;font-size:12px;color:var(--text-dim)">Turnos de 30 min o 1 hora según tipo de consulta. Atención particular — sin obras sociales.</p>
     </div>
   </div>
 
@@ -620,16 +644,7 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--snow);color:var
 <div id="view-doctor">
   <div id="panel-login" class="login-wrap">
     <div class="login-card">
-      <div class="login-logo"><div style="display:inline-flex;align-items:center;gap:8px;margin-bottom:4px;">
-          <svg width="26" height="26" viewBox="0 0 52 52" fill="none">
-            <circle cx="26" cy="26" r="22" stroke="#dde3ef" stroke-width="1.5" fill="none"/>
-            <path d="M 26 4 A 22 22 0 0 1 48 26" stroke="#1a4f8a" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-            <path d="M 17 36 L 26 14 L 35 36" stroke="#1a2035" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M 20.5 28 L 31.5 28" stroke="#1a4f8a" stroke-width="2" stroke-linecap="round"/>
-            <circle cx="26" cy="14" r="2.5" fill="#1a4f8a"/>
-          </svg>
-          <span style="font-family:'Lora',serif;font-size:26px;color:#1a4f8a;font-weight:500;letter-spacing:-.5px;">Agend<em style="font-style:italic;">ado</em>.</span>
-        </div></div>
+      <div class="login-logo">Agendado.</div>
       <p class="login-sub">Panel del profesional · Acceso privado</p>
       <label class="login-label">Usuario</label>
       <input class="login-input" type="text" placeholder="dr.demo" id="login-user">
@@ -643,19 +658,21 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--snow);color:var
 
   <div id="panel-inner" style="display:none">
     <div class="panel-header">
-      <div class="panel-logo"><a href="#" style="display:inline-flex;align-items:center;gap:8px;text-decoration:none;">
-          <svg width="28" height="28" viewBox="0 0 52 52" fill="none">
-            <circle cx="26" cy="26" r="22" stroke="#dde3ef" stroke-width="1.5" fill="none"/>
-            <path d="M 26 4 A 22 22 0 0 1 48 26" stroke="#1a4f8a" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-            <path d="M 17 36 L 26 14 L 35 36" stroke="#1a2035" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M 20.5 28 L 31.5 28" stroke="#1a4f8a" stroke-width="2" stroke-linecap="round"/>
-            <circle cx="26" cy="14" r="2.5" fill="#1a4f8a"/>
-          </svg>
-          <span style="font-family:'Lora',serif;font-size:20px;font-weight:500;color:var(--text,#1a2035);letter-spacing:-.5px;line-height:1;">Agend<em style="font-style:italic;color:var(--blue,#1a4f8a);">ado</em>.</span>
-        </a></div>
-      <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
-        <span style="font-size:12px;color:var(--text-mid)">Dr. González Gómez</span>
-        <button onclick="switchView()" style="font-size:11px;font-weight:600;color:var(--blue);background:var(--blue-pale);border:1px solid rgba(26,79,138,.15);padding:5px 12px;border-radius:20px;cursor:pointer;font-family:Plus Jakarta Sans,sans-serif;">👤 Vista paciente</button>
+      <!-- Logo unificado — igual que vista paciente -->
+      <a href="#" class="panel-logo">
+        <svg width="28" height="28" viewBox="0 0 52 52" fill="none">
+          <circle cx="26" cy="26" r="22" stroke="#dde3ef" stroke-width="1.5" fill="none"/>
+          <path d="M 26 4 A 22 22 0 0 1 48 26" stroke="#1a4f8a" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          <path d="M 17 36 L 26 14 L 35 36" stroke="#1a2035" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M 20.5 28 L 31.5 28" stroke="#1a4f8a" stroke-width="2.5" stroke-linecap="round"/>
+          <circle cx="26" cy="14" r="3" fill="#1a4f8a"/>
+        </svg>
+        <span style="font-family:'Lora',serif;font-size:20px;font-weight:500;color:#1a2035;letter-spacing:-.5px;line-height:1;">Agend<em style="font-style:italic;color:#1a4f8a;">ado</em>.</span>
+      </a>
+      <!-- Lado derecho panel médico -->
+      <div style="display:flex;align-items:center;gap:8px;">
+        <span style="font-size:11px;font-weight:600;color:var(--text-mid);display:none;" id="panel-prof-name">Lic. Demo</span>
+        <button onclick="switchView()" style="font-size:11px;font-weight:600;color:var(--blue);background:var(--blue-pale);border:1px solid rgba(26,79,138,.15);padding:5px 12px;border-radius:20px;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;transition:all .2s;white-space:nowrap;">👤 Vista paciente</button>
         <button class="btn-logout" onclick="doLogout()">Salir</button>
       </div>
     </div>
@@ -674,9 +691,9 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--snow);color:var
       <!-- Header mes -->
       <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
         <div style="display:flex;align-items:center;gap:8px">
-          <button class="day-nav-btn" onclick="changeMonth(-1)">‹</button>
+          <button class="day-nav-btn" onclick="changePanelMonth(-1)">‹</button>
           <span style="font-family:'Lora',serif;font-size:17px;color:var(--text);font-weight:600" id="panel-month-label"></span>
-          <button class="day-nav-btn" onclick="changeMonth(1)">›</button>
+          <button class="day-nav-btn" onclick="changePanelMonth(1)">›</button>
         </div>
         <div style="display:flex;gap:6px">
           <button class="day-nav-btn" onclick="goToToday()" style="font-size:10px;font-weight:700;padding:0 10px;border-radius:8px;width:auto;white-space:nowrap">Hoy</button>
@@ -727,7 +744,7 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--snow);color:var
       <div class="config-section">
         <span class="config-label">Foto de perfil</span>
         <div style="display:flex;align-items:center;gap:14px;padding:16px;background:var(--white);border:1px solid var(--border);border-radius:12px;box-shadow:var(--shadow-sm)">
-          <div id="config-avatar" style="width:56px;height:56px;border-radius:50%;background:var(--blue-pale);border:2px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:24px;overflow:hidden;flex-shrink:0">🦷</div>
+          <div id="config-avatar" style="width:56px;height:56px;border-radius:50%;background:var(--blue-pale);border:2px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:24px;overflow:hidden;flex-shrink:0"><img src="data:image/jpeg;base64,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" style="width:100%;height:100%;object-fit:cover;"></div>
           <div>
             <div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:4px">Foto o logo del profesional</div>
             <div style="font-size:12px;color:var(--text-mid);margin-bottom:8px">Se muestra en la página del paciente.</div>
@@ -743,7 +760,7 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--snow);color:var
 
           <div class="form-group">
             <label class="form-label">Nombre completo <span style="color:var(--rose)">*</span></label>
-            <input class="form-input" id="cfg-nombre" type="text" placeholder="Dr. Bruno González Gómez">
+            <input class="form-input" id="cfg-nombre" type="text" placeholder="Tu nombre completo">
           </div>
 
           <div class="form-group">
@@ -753,32 +770,32 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--snow);color:var
 
           <div class="form-group">
             <label class="form-label">Especialidad <span style="color:var(--rose)">*</span></label>
-            <input class="form-input" id="cfg-especialidad" type="text" placeholder="Cirugía Dentomaxilar">
+            <input class="form-input" id="cfg-especialidad" type="text" placeholder="Ortodoncia">
           </div>
 
           <div class="form-group">
             <label class="form-label">Matrícula <span style="color:var(--text-dim);font-style:italic;font-weight:400">(opcional)</span></label>
-            <input class="form-input" id="cfg-matricula" type="text" placeholder="MP 1234">
+            <input class="form-input" id="cfg-matricula" type="text" placeholder="Tu matrícula">
           </div>
 
           <div class="form-group">
             <label class="form-label">Consultorio / Estudio <span style="color:var(--text-dim);font-style:italic;font-weight:400">(opcional)</span></label>
-            <input class="form-input" id="cfg-consultorio" type="text" placeholder="Clínica CEMIJ">
+            <input class="form-input" id="cfg-consultorio" type="text" placeholder="Consultorios LIBERTAD">
           </div>
 
           <div class="form-group">
             <label class="form-label">Dirección <span style="color:var(--rose)">*</span></label>
-            <input class="form-input" id="cfg-direccion" type="text" placeholder="Jujuy 173, Tucumán">
+            <input class="form-input" id="cfg-direccion" type="text" placeholder="Tu dirección">
           </div>
 
           <div class="form-group">
             <label class="form-label">WhatsApp / Teléfono <span style="color:var(--rose)">*</span></label>
-            <input class="form-input" id="cfg-telefono" type="tel" placeholder="+543815293000">
+            <input class="form-input" id="cfg-telefono" type="tel" placeholder="+54 9 383 400 7226">
           </div>
 
           <div class="form-group">
             <label class="form-label">Email <span style="color:var(--rose)">*</span></label>
-            <input class="form-input" id="cfg-email" type="email" placeholder="brusaje2213@hotmail.com">
+            <input class="form-input" id="cfg-email" type="email" placeholder="hola@agendado.link">
           </div>
 
           <div class="form-group" style="margin-bottom:0">
@@ -794,14 +811,31 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--snow);color:var
       <div class="config-section">
         <span class="config-label">Horario de atención</span>
         <div style="background:var(--white);border:1px solid var(--border);border-radius:12px;padding:16px;box-shadow:var(--shadow-sm)">
+          <!-- Turno mañana -->
+          <div style="font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--text-dim);margin-bottom:8px;">🌅 Turno mañana</div>
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px">
             <div>
               <label class="form-label">Desde</label>
-              <input class="form-input" id="cfg-hora-inicio" type="time" value="16:00">
+              <input class="form-input" id="cfg-hora-inicio" type="time" value="08:30">
             </div>
             <div>
               <label class="form-label">Hasta</label>
-              <input class="form-input" id="cfg-hora-fin" type="time" value="19:30">
+              <input class="form-input" id="cfg-hora-fin" type="time" value="13:00">
+            </div>
+          </div>
+          <!-- Turno tarde -->
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+            <div class="toggle" id="toggle-tarde" onclick="toggleTarde(this)" style="flex-shrink:0"></div>
+            <span style="font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--text-dim);">🌆 Turno tarde (opcional)</span>
+          </div>
+          <div id="wrap-tarde" style="display:none;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px">
+            <div>
+              <label class="form-label">Desde</label>
+              <input class="form-input" id="cfg-hora-inicio2" type="time" value="15:30">
+            </div>
+            <div>
+              <label class="form-label">Hasta</label>
+              <input class="form-input" id="cfg-hora-fin2" type="time" value="20:00">
             </div>
           </div>
           <div>
@@ -822,9 +856,13 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--snow);color:var
       <!-- NOTIFICACIONES -->
       <div class="config-section">
         <span class="config-label">Notificaciones</span>
-        <div class="config-row"><span class="config-row-label">Recordatorio 24hs</span><div class="toggle on" onclick="this.classList.toggle('on')"></div></div>
-        <div class="config-row"><span class="config-row-label">Nueva reserva</span><div class="toggle on" onclick="this.classList.toggle('on')"></div></div>
-        <div class="config-row"><span class="config-row-label">Resumen diario</span><div class="toggle" onclick="this.classList.toggle('on')"></div></div>
+        <!-- Toggle recordatorio oculto - funcionalidad pendiente -->
+        <div class="config-row"><span class="config-row-label">Nueva reserva</span><div class="toggle on" id="tog-nueva-reserva" onclick="toggleNotif(this,'nueva-reserva')"></div></div>
+        <!-- Toggle resumen diario oculto - funcionalidad pendiente -->
+        <div class="config-row">
+          <div><span class="config-row-label">Bloquear feriados nacionales</span><div style="font-size:11px;color:var(--text-dim);margin-top:2px;">Argentina 2025-2026 incluidos automáticamente</div></div>
+          <div class="toggle on" id="tog-feriados" onclick="toggleFeriados(this)"></div>
+        </div>
       </div>
 
       <!-- GUARDAR -->
@@ -832,16 +870,13 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--snow);color:var
         Guardar cambios
       </button>
 
-
       <!-- DÍAS ESPECIALES -->
       <div class="config-section" id="config-dias-especiales">
         <span class="config-label">👥 Días especiales / Profesional invitado</span>
         <p style="font-size:12px;color:var(--text-mid);margin-bottom:12px;line-height:1.5;">Configurá días donde trabajás con otro profesional. Tus pacientes verán una nota al reservar ese día.</p>
 
-        <!-- Lista actual -->
         <div id="dias-esp-list"></div>
 
-        <!-- Formulario agregar -->
         <div style="background:var(--white);border:1px solid var(--border);border-radius:12px;padding:14px;box-shadow:var(--shadow-sm);">
           <div style="font-size:11px;font-weight:700;color:var(--text-mid);letter-spacing:.5px;text-transform:uppercase;margin-bottom:10px;">+ Agregar día especial</div>
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px;">
@@ -916,26 +951,57 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--snow);color:var
         <div class="disp-panel" id="disp-panel-franjas">
           <div id="disp-franjas-list" style="margin-bottom:12px;"></div>
           <div class="disp-form">
-            <div class="disp-form-title">+ Bloquear franja horaria</div>
+            <div class="disp-form-title">+ Bloquear franjas horarias</div>
+
+            <!-- Fecha común para todas las franjas del lote -->
             <div class="disp-mb">
               <label class="form-label">Fecha</label>
               <input class="form-input" id="franja-fecha" type="date">
             </div>
-            <div class="disp-grid-2">
-              <div>
-                <label class="form-label">Desde</label>
-                <input class="form-input" id="franja-desde" type="time" value="09:00">
-              </div>
-              <div>
-                <label class="form-label">Hasta</label>
-                <input class="form-input" id="franja-hasta" type="time" value="12:00">
+
+            <!-- Accesos rápidos mañana/tarde -->
+            <div style="display:flex;gap:8px;margin-bottom:12px;">
+              <button onclick="bloqueoRapido('manana')"
+                style="flex:1;padding:9px 6px;border:1.5px solid rgba(217,119,6,.3);border-radius:10px;background:rgba(217,119,6,.07);color:var(--amber);font-family:'Plus Jakarta Sans',sans-serif;font-size:11px;font-weight:700;cursor:pointer;transition:all .2s;"
+                onmouseover="this.style.background='rgba(217,119,6,.14)'" onmouseout="this.style.background='rgba(217,119,6,.07)'">
+                🌅 Bloquear mañana completa
+              </button>
+              <button onclick="bloqueoRapido('tarde')"
+                style="flex:1;padding:9px 6px;border:1.5px solid rgba(26,79,138,.2);border-radius:10px;background:var(--blue-pale);color:var(--blue);font-family:'Plus Jakarta Sans',sans-serif;font-size:11px;font-weight:700;cursor:pointer;transition:all .2s;"
+                onmouseover="this.style.background='rgba(26,79,138,.12)'" onmouseout="this.style.background='var(--blue-pale)'">
+                🌆 Bloquear tarde completa
+              </button>
+            </div>
+
+            <!-- Contenedor de franjas dinámicas -->
+            <div id="franjas-rows">
+              <!-- Fila 1 (siempre visible) -->
+              <div class="franja-row" id="franja-row-0">
+                <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
+                  <span style="font-size:10px;font-weight:700;color:var(--text-dim);text-transform:uppercase;letter-spacing:.5px;">Franja 1</span>
+                </div>
+                <div class="disp-grid-2" style="margin-bottom:8px;">
+                  <div>
+                    <label class="form-label">Desde</label>
+                    <input class="form-input franja-desde" type="time" value="09:00">
+                  </div>
+                  <div>
+                    <label class="form-label">Hasta</label>
+                    <input class="form-input franja-hasta" type="time" value="10:00">
+                  </div>
+                </div>
+                <div class="disp-mb">
+                  <input class="form-input franja-motivo" type="text" placeholder="Motivo (opcional)">
+                </div>
               </div>
             </div>
-            <div class="disp-mb">
-              <label class="form-label">Motivo <span style="font-weight:400;font-style:italic;color:var(--text-dim)">(opcional)</span></label>
-              <input class="form-input" id="franja-motivo" type="text" placeholder="Reunión, guardia, almuerzo...">
-            </div>
-            <button class="btn-bloquear-franja" onclick="agregarFranja()">⏰ Bloquear horario</button>
+
+            <!-- Botón agregar franja -->
+            <button onclick="addFranjaRow()" style="width:100%;padding:9px;border:1.5px dashed var(--border2);border-radius:10px;background:transparent;color:var(--text-mid);font-family:'Plus Jakarta Sans',sans-serif;font-size:12px;font-weight:600;cursor:pointer;margin-bottom:12px;transition:all .2s;" onmouseover="this.style.borderColor='var(--teal)';this.style.color='var(--teal)'" onmouseout="this.style.borderColor='var(--border2)';this.style.color='var(--text-mid)'">
+              + Agregar otra franja
+            </button>
+
+            <button class="btn-bloquear-franja" onclick="agregarFranjas()">⏰ Bloquear franjas</button>
           </div>
         </div>
       </div>
@@ -947,15 +1013,6 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--snow);color:var
 
 <script>
 // ══════════════════════════════════════
-
-// DEMO MODE: sbPost intercepted - no real data saved
-const _sbPostReal = sbPost;
-window.sbPost = async function(path, body) {
-  // Simulate a 500ms network delay then return fake success
-  await new Promise(r => setTimeout(r, 500));
-  return [{ id: 'demo-' + Date.now(), ...body }];
-};
-
 // SUPABASE CONFIG
 // ══════════════════════════════════════
 const SB_URL = 'https://nnbmkqfjepvaildxcoac.supabase.co';
@@ -998,15 +1055,14 @@ function showToast(msg, type='error') {
 // ══════════════════════════════════════
 async function init() {
   try {
-    // ID fijo del Dr. Bruno González Gómez
-    PROFESIONAL_ID = '00000000-0000-0000-0000-000000000001';
+    // ID fijo del Dr. José María Jiménez
+    PROFESIONAL_ID = '44c0a06d-5b6b-4756-a1bb-5942302ae6c2';
     await loadTurnosMes();
-  loadFreeCounter();
     // Cargar chips del hero desde Supabase
     const prof = await sbGet('profesionales?id=eq.' + PROFESIONAL_ID + '&select=nombre,especialidad,matricula,consultorio,otro&limit=1');
     if (prof && prof[0]) {
       const p = prof[0];
-      if (p.especialidad) actualizarChipsHero(p.especialidad, p.matricula, p.consultorio, p.otro);
+      actualizarChipsHero(p.especialidad, p.matricula, p.consultorio, p.otro);
       const heroName = document.querySelector('.hero-name');
       if (heroName && p.nombre) heroName.textContent = p.nombre;
     }
@@ -1063,7 +1119,7 @@ function switchView() {
   document.getElementById('view-patient').classList.toggle('active', !inDoctor);
   document.getElementById('view-doctor').classList.toggle('active', inDoctor);
   document.getElementById('switch-icon').textContent = inDoctor ? '👤' : '🩺';
-  document.getElementById('switch-label').textContent = inDoctor ? 'Vista paciente' : 'Panel profesional';
+  document.getElementById('switch-label').textContent = inDoctor ? 'Vista paciente' : 'Panel médico';
   document.getElementById('switch-outer').style.display = inDoctor ? 'none' : 'block';
   // Si tiene sesión guardada, activar panel directamente
   if (inDoctor && checkSession()) {
@@ -1083,10 +1139,14 @@ const monthNames = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Ag
 const dayNames = ['D','L','M','M','J','V','S'];
 
 function getAvailDays() {
+  const diasMap = { 0:'dom', 1:'lun', 2:'mar', 3:'mie', 4:'jue', 5:'vie', 6:'sab' };
+  let diasActivos;
+  try { diasActivos = JSON.parse(localStorage.getItem('agendado_dias_atencion') || '["lun","mar","mie","jue","vie"]'); }
+  catch(e) { diasActivos = ['lun','mar','mie','jue','vie']; }
   const s = new Set(), dim = new Date(curYear, curMonth+1, 0).getDate();
   for (let d = 1; d <= dim; d++) {
     const dt = new Date(curYear, curMonth, d), dow = dt.getDay();
-    if (dow >= 1 && dow <= 5) s.add(d);
+    if (diasActivos.includes(diasMap[dow])) s.add(d);
   }
   return s;
 }
@@ -1138,15 +1198,29 @@ function changeMonth(dir) {
   renderCalendar();
 }
 
-// Genera slots de 30 y 45 min entre 16:00 y 19:30
+// Genera slots para mañana (08:30-11:30) y tarde (15:30-20:00)
 function generateSlots(dur) {
   const slots = [];
-  let h = 16, m = 0;
-  while (h < 19 || (h === 19 && m === 0)) {
-    slots.push(`${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}`);
-    m += dur;
-    if (m >= 60) { h++; m -= 60; }
+
+  // Leer horario desde config guardada o usar defaults
+  const hi1 = (localStorage.getItem('agendado_hora_inicio') || '08:30').split(':');
+  const hf1 = (localStorage.getItem('agendado_hora_fin')    || '13:00').split(':');
+  const tardeOn = localStorage.getItem('agendado_turno_tarde') === '1';
+  const hi2 = (localStorage.getItem('agendado_hora_inicio2') || '15:30').split(':');
+  const hf2 = (localStorage.getItem('agendado_hora_fin2')    || '20:00').split(':');
+
+  function addRange(hIni, mIni, hFin, mFin) {
+    let h = hIni, m = mIni;
+    while (h < hFin || (h === hFin && m < mFin)) {
+      slots.push(String(h).padStart(2,'0') + ':' + String(m).padStart(2,'0'));
+      m += dur;
+      if (m >= 60) { h++; m -= 60; }
+    }
   }
+
+  addRange(parseInt(hi1[0]), parseInt(hi1[1]), parseInt(hf1[0]), parseInt(hf1[1]));
+  if (tardeOn) addRange(parseInt(hi2[0]), parseInt(hi2[1]), parseInt(hf2[0]), parseInt(hf2[1]));
+
   return slots;
 }
 
@@ -1209,7 +1283,7 @@ function selectSlot(time, dur, el) {
   el.classList.add('selected');
   const label = selDate.toLocaleDateString('es-AR', { weekday:'long', day:'numeric', month:'long' });
   const cap = label.charAt(0).toUpperCase() + label.slice(1);
-  document.getElementById('booking-summary-text').textContent = cap + ' · ' + time + ' hs · ' + dur + ' min · Dr. Demo';
+  document.getElementById('booking-summary-text').textContent = cap + ' · ' + time + ' hs · ' + dur + ' min · Dr. José Jiménez';
   const form = document.getElementById('booking-form');
   form.classList.add('visible');
   setTimeout(() => form.scrollIntoView({ behavior:'smooth', block:'nearest' }), 100);
@@ -1218,128 +1292,6 @@ function selectSlot(time, dur, el) {
 // ══════════════════════════════════════
 // CONFIRMAR TURNO → SUPABASE
 // ══════════════════════════════════════
-
-// ══════════════════════════════════════
-// FREE PLAN COUNTER
-// ══════════════════════════════════════
-const FREE_LIMIT = 15;
-let turnosMesCount = 0;
-
-async function loadFreeCounter() {
-  try {
-    const now = new Date();
-    const from = new Date(now.getFullYear(), now.getMonth(), 1).toISOString().split('T')[0];
-    const to   = new Date(now.getFullYear(), now.getMonth()+1, 0).toISOString().split('T')[0];
-    const data = await sbGet(`turnos?profesional_id=eq.${PROFESIONAL_ID}&fecha=gte.${from}&fecha=lte.${to}&estado=neq.cancelado&select=id`);
-    turnosMesCount = Array.isArray(data) ? data.length : 0;
-    updateFreeCounter(turnosMesCount);
-  } catch(e) { console.warn('Free counter error:', e); }
-}
-
-function updateFreeCounter(count) {
-  const pct = Math.min((count / FREE_LIMIT) * 100, 100);
-  const remaining = Math.max(FREE_LIMIT - count, 0);
-  const numEl = document.getElementById('fc-num');
-  const barEl = document.getElementById('fc-bar');
-  const subEl = document.getElementById('fc-sub');
-  const blockedEl = document.getElementById('free-blocked-banner');
-  const calCard = document.querySelector('#sec-turno .card');
-  const slotsWrap = document.getElementById('slots-wrap');
-  if (numEl) numEl.textContent = count + '/' + FREE_LIMIT;
-  if (barEl) { barEl.style.width = pct + '%'; if (pct >= 80) barEl.classList.add('warning'); }
-  if (subEl) {
-    if (remaining === 0) subEl.textContent = '⛔ Límite alcanzado — turnos bloqueados este mes.';
-    else if (remaining <= 3) subEl.textContent = '⚠️ Solo quedan ' + remaining + ' turno' + (remaining===1?'':'s') + ' disponibles este mes.';
-    else subEl.textContent = 'Quedan ' + remaining + ' turno' + (remaining===1?'':'s') + ' disponibles este mes.';
-  }
-  if (count >= FREE_LIMIT) {
-    if (blockedEl) blockedEl.style.display = 'block';
-    if (calCard) calCard.style.pointerEvents = 'none', calCard.style.opacity = '.45';
-    if (slotsWrap) slotsWrap.style.display = 'none';
-    const bookingFlow = document.getElementById('booking-flow');
-    if (bookingFlow) { const eyebrow = bookingFlow.querySelector('.sec-eyebrow'); if(eyebrow) eyebrow.style.display='none'; const title = bookingFlow.querySelector('.sec-title'); if(title) title.style.display='none'; const sub = bookingFlow.querySelector('.sec-sub'); if(sub) sub.style.display='none'; }
-  }
-}
-
-
-// ══════════════════════════════════════
-// DÍAS ESPECIALES
-// ══════════════════════════════════════
-const DIAS_LABELS = { lun:'LUN', mar:'MAR', mie:'MIÉ', jue:'JUE', vie:'VIE', sab:'SÁB', dom:'DOM' };
-const DIAS_FULL   = { lun:'Lunes', mar:'Martes', mie:'Miércoles', jue:'Jueves', vie:'Viernes', sab:'Sábado', dom:'Domingo' };
-
-function getDiasEspeciales() {
-  try { return JSON.parse(localStorage.getItem('agendado_dias_esp') || '[]'); } catch(e) { return []; }
-}
-function saveDiasEspeciales(arr) {
-  localStorage.setItem('agendado_dias_esp', JSON.stringify(arr));
-}
-
-function renderDiasEspeciales() {
-  const list = document.getElementById('dias-esp-list');
-  if (!list) return;
-  const arr = getDiasEspeciales();
-  if (!arr.length) {
-    list.innerHTML = '<div class="dias-esp-empty">Sin días especiales configurados.</div>';
-    return;
-  }
-  list.innerHTML = arr.map((d, i) => `
-    <div class="dias-esp-item">
-      <div class="dias-esp-day">${DIAS_LABELS[d.dia] || d.dia}</div>
-      <div class="dias-esp-info">
-        <div class="dias-esp-prof">${d.nombre} · <span style="font-weight:400;color:var(--text-mid)">${d.especialidad}</span></div>
-        ${d.nota ? `<div class="dias-esp-note">💬 ${d.nota}</div>` : ''}
-        <div style="font-size:10px;color:var(--text-dim);margin-top:2px;">Visible todos los ${DIAS_FULL[d.dia] || d.dia}</div>
-      </div>
-      <button class="dias-esp-del" onclick="eliminarDiaEspecial(${i})">✕</button>
-    </div>
-  `).join('');
-}
-
-function agregarDiaEspecial() {
-  const dia   = document.getElementById('esp-dia').value;
-  const nombre= document.getElementById('esp-nombre').value.trim();
-  const esp   = document.getElementById('esp-especialidad').value.trim();
-  const nota  = document.getElementById('esp-nota').value.trim();
-  if (!nombre || !esp) { showToast('Completá nombre y especialidad.'); return; }
-  const arr = getDiasEspeciales();
-  arr.push({ dia, nombre, especialidad: esp, nota });
-  saveDiasEspeciales(arr);
-  document.getElementById('esp-nombre').value = '';
-  document.getElementById('esp-especialidad').value = '';
-  document.getElementById('esp-nota').value = '';
-  renderDiasEspeciales();
-  showToast('Día especial guardado ✓');
-}
-
-function eliminarDiaEspecial(idx) {
-  const arr = getDiasEspeciales();
-  arr.splice(idx, 1);
-  saveDiasEspeciales(arr);
-  renderDiasEspeciales();
-}
-
-// Mostrar nota en slots cuando el día seleccionado es especial
-function checkDiaEspecial(fecha) {
-  const dias  = ['dom','lun','mar','mie','jue','vie','sab'];
-  const dow   = dias[new Date(fecha + 'T12:00:00').getDay()];
-  const arr   = getDiasEspeciales();
-  const match = arr.find(d => d.dia === dow);
-  const notifEl = document.getElementById('dias-esp-notif');
-  if (notifEl) notifEl.remove();
-  if (match) {
-    const slotsWrap = document.getElementById('slots-wrap');
-    if (slotsWrap) {
-      const notif = document.createElement('div');
-      notif.id = 'dias-esp-notif';
-      notif.style.cssText = 'background:var(--blue-pale);border:1px solid rgba(26,79,138,.15);border-radius:10px;padding:12px 14px;margin:0 16px 12px;display:flex;gap:10px;align-items:flex-start;';
-      notif.innerHTML = `<span style="font-size:18px;flex-shrink:0;">👥</span><div><div style="font-size:12px;font-weight:700;color:var(--blue);margin-bottom:2px;">Atención conjunta este día</div><div style="font-size:11px;color:var(--text-mid);">Trabaja junto con <strong>${match.nombre}</strong> — ${match.especialidad}${match.nota ? '. ' + match.nota : ''}.</div></div>`;
-      slotsWrap.insertAdjacentElement('beforebegin', notif);
-    }
-  }
-}
-
-
 
 // ══════════════════════════════════════
 // GESTIÓN DE DISPONIBILIDAD
@@ -1360,7 +1312,7 @@ function getBloqueos() {
 function saveBloqueos(arr) { localStorage.setItem('agendado_bloqueos', JSON.stringify(arr)); }
 
 function esDiaBloqueado(fechaStr) {
-  return getBloqueos().some(b => fechaStr >= b.desde && fechaStr <= b.hasta);
+  return esFeriado(fechaStr) || getBloqueos().some(b => fechaStr >= b.desde && fechaStr <= b.hasta);
 }
 
 function renderBloqueos() {
@@ -1433,20 +1385,201 @@ function renderFranjas() {
     </div>`).join('');
 }
 
-function agregarFranja() {
-  const fecha  = document.getElementById('franja-fecha').value;
-  const desde  = document.getElementById('franja-desde').value;
-  const hasta  = document.getElementById('franja-hasta').value;
-  const motivo = document.getElementById('franja-motivo').value.trim();
-  if (!fecha || !desde || !hasta) { showToast('Completá fecha y horario.'); return; }
-  if (hasta <= desde) { showToast('El horario "hasta" debe ser mayor a "desde".'); return; }
+
+// ══════════════════════════════════════
+// DÍAS ESPECIALES
+// ══════════════════════════════════════
+const DIAS_LABELS = { lun:'LUN', mar:'MAR', mie:'MIÉ', jue:'JUE', vie:'VIE', sab:'SÁB', dom:'DOM' };
+const DIAS_FULL   = { lun:'Lunes', mar:'Martes', mie:'Miércoles', jue:'Jueves', vie:'Viernes', sab:'Sábado', dom:'Domingo' };
+
+function getDiasEspeciales() {
+  try { return JSON.parse(localStorage.getItem('agendado_dias_esp') || '[]'); } catch(e) { return []; }
+}
+function saveDiasEspeciales(arr) {
+  localStorage.setItem('agendado_dias_esp', JSON.stringify(arr));
+}
+
+function renderDiasEspeciales() {
+  const list = document.getElementById('dias-esp-list');
+  if (!list) return;
+  const arr = getDiasEspeciales();
+  if (!arr.length) {
+    list.innerHTML = '<div class="dias-esp-empty">Sin días especiales configurados.</div>';
+    return;
+  }
+  list.innerHTML = arr.map((d, i) => `
+    <div class="dias-esp-item">
+      <div class="dias-esp-day">${DIAS_LABELS[d.dia] || d.dia}</div>
+      <div class="dias-esp-info">
+        <div class="dias-esp-prof">${d.nombre} · <span style="font-weight:400;color:var(--text-mid)">${d.especialidad}</span></div>
+        ${d.nota ? `<div class="dias-esp-note">💬 ${d.nota}</div>` : ''}
+        <div style="font-size:10px;color:var(--text-dim);margin-top:2px;">Visible todos los ${DIAS_FULL[d.dia] || d.dia}</div>
+      </div>
+      <button class="dias-esp-del" onclick="eliminarDiaEspecial(${i})">✕</button>
+    </div>
+  `).join('');
+}
+
+function agregarDiaEspecial() {
+  const dia    = document.getElementById('esp-dia').value;
+  const nombre = document.getElementById('esp-nombre').value.trim();
+  const esp    = document.getElementById('esp-especialidad').value.trim();
+  const nota   = document.getElementById('esp-nota').value.trim();
+  if (!nombre || !esp) { showToast('Completá nombre y especialidad.'); return; }
+  const arr = getDiasEspeciales();
+  arr.push({ dia, nombre, especialidad: esp, nota });
+  saveDiasEspeciales(arr);
+  document.getElementById('esp-nombre').value = '';
+  document.getElementById('esp-especialidad').value = '';
+  document.getElementById('esp-nota').value = '';
+  renderDiasEspeciales();
+  showToast('✓ Día especial guardado', 'info');
+}
+
+function eliminarDiaEspecial(idx) {
+  const arr = getDiasEspeciales();
+  arr.splice(idx, 1);
+  saveDiasEspeciales(arr);
+  renderDiasEspeciales();
+}
+
+function checkDiaEspecial(fecha) {
+  const dias  = ['dom','lun','mar','mie','jue','vie','sab'];
+  const dow   = dias[new Date(fecha + 'T12:00:00').getDay()];
+  const arr   = getDiasEspeciales();
+  const match = arr.find(d => d.dia === dow);
+  const notifEl = document.getElementById('dias-esp-notif');
+  if (notifEl) notifEl.remove();
+  if (match) {
+    const slotsWrap = document.getElementById('slots-wrap');
+    if (slotsWrap) {
+      const notif = document.createElement('div');
+      notif.id = 'dias-esp-notif';
+      notif.style.cssText = 'background:var(--blue-pale);border:1px solid rgba(26,79,138,.15);border-radius:10px;padding:12px 14px;margin:0 16px 12px;display:flex;gap:10px;align-items:flex-start;';
+      notif.innerHTML = `<span style="font-size:18px;flex-shrink:0;">👥</span><div><div style="font-size:12px;font-weight:700;color:var(--blue);margin-bottom:2px;">Atención conjunta este día</div><div style="font-size:11px;color:var(--text-mid);">Trabaja junto con <strong>${match.nombre}</strong> — ${match.especialidad}${match.nota ? '. ' + match.nota : ''}.</div></div>`;
+      slotsWrap.insertAdjacentElement('beforebegin', notif);
+    }
+  }
+}
+
+
+// ══════════════════════════════════════
+// BLOQUEO RÁPIDO MAÑANA / TARDE
+// ══════════════════════════════════════
+function bloqueoRapido(turno) {
+  const fecha = document.getElementById('franja-fecha').value;
+  if (!fecha) { showToast('Seleccioná primero una fecha.'); return; }
+
+  // Leer horarios configurados o usar defaults
+  const hi1 = localStorage.getItem('agendado_hora_inicio') || '08:30';
+  const hf1 = localStorage.getItem('agendado_hora_fin')    || '13:00';
+  const hi2 = localStorage.getItem('agendado_hora_inicio2') || '15:30';
+  const hf2 = localStorage.getItem('agendado_hora_fin2')    || '20:00';
+
+  const desde  = turno === 'manana' ? hi1 : hi2;
+  const hasta  = turno === 'manana' ? hf1 : hf2;
+  const motivo = turno === 'manana' ? 'Mañana bloqueada' : 'Tarde bloqueada';
+  const label  = turno === 'manana' ? '🌅 mañana' : '🌆 tarde';
+
   const arr = getFranjas();
+  // Verificar que no esté ya bloqueada esa franja ese día
+  const yaExiste = arr.some(f => f.fecha === fecha && f.desde === desde && f.hasta === hasta);
+  if (yaExiste) { showToast('Esa franja ya está bloqueada para esa fecha.'); return; }
+
   arr.push({ fecha, desde, hasta, motivo });
   saveFranjas(arr);
-  document.getElementById('franja-fecha').value  = '';
-  document.getElementById('franja-motivo').value = '';
   renderFranjas();
-  showToast('✓ Franja bloqueada', 'info');
+  showToast('✓ ' + label + ' bloqueada (' + desde + ' – ' + hasta + ')', 'info');
+}
+
+let franjaRowCount = 1;
+
+function addFranjaRow() {
+  const container = document.getElementById('franjas-rows');
+  const idx = franjaRowCount;
+  const row = document.createElement('div');
+  row.className = 'franja-row';
+  row.id = 'franja-row-' + idx;
+  row.innerHTML = `
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
+      <span style="font-size:10px;font-weight:700;color:var(--text-dim);text-transform:uppercase;letter-spacing:.5px;">Franja ${idx + 1}</span>
+      <button class="franja-row-del" onclick="removeFranjaRow(${idx})">✕</button>
+    </div>
+    <div class="disp-grid-2" style="margin-bottom:8px;">
+      <div>
+        <label class="form-label">Desde</label>
+        <input class="form-input franja-desde" type="time" value="15:30">
+      </div>
+      <div>
+        <label class="form-label">Hasta</label>
+        <input class="form-input franja-hasta" type="time" value="17:00">
+      </div>
+    </div>
+    <div class="disp-mb">
+      <input class="form-input franja-motivo" type="text" placeholder="Motivo (opcional)">
+    </div>`;
+  container.appendChild(row);
+  franjaRowCount++;
+  // Actualizar labels de numeración
+  updateFranjaLabels();
+}
+
+function removeFranjaRow(idx) {
+  const row = document.getElementById('franja-row-' + idx);
+  if (row) row.remove();
+  updateFranjaLabels();
+}
+
+function updateFranjaLabels() {
+  const rows = document.querySelectorAll('.franja-row');
+  rows.forEach((row, i) => {
+    const label = row.querySelector('span');
+    if (label) label.textContent = 'Franja ' + (i + 1);
+  });
+}
+
+function agregarFranjas() {
+  const fecha = document.getElementById('franja-fecha').value;
+  if (!fecha) { showToast('Seleccioná una fecha.'); return; }
+
+  const rows = document.querySelectorAll('.franja-row');
+  const arr = getFranjas();
+  let agregadas = 0;
+  let errores = [];
+
+  rows.forEach((row, i) => {
+    const desde  = row.querySelector('.franja-desde').value;
+    const hasta  = row.querySelector('.franja-hasta').value;
+    const motivo = row.querySelector('.franja-motivo').value.trim();
+    if (!desde || !hasta) { errores.push('Franja ' + (i+1) + ': completá horario'); return; }
+    if (hasta <= desde)   { errores.push('Franja ' + (i+1) + ': "hasta" debe ser mayor a "desde"'); return; }
+    arr.push({ fecha, desde, hasta, motivo });
+    agregadas++;
+  });
+
+  if (errores.length) { showToast(errores[0]); return; }
+  if (!agregadas) { showToast('No hay franjas válidas para guardar.'); return; }
+
+  saveFranjas(arr);
+
+  // Reset form — dejar solo fila 1
+  document.getElementById('franja-fecha').value = '';
+  const container = document.getElementById('franjas-rows');
+  container.innerHTML = `
+    <div class="franja-row" id="franja-row-0">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
+        <span style="font-size:10px;font-weight:700;color:var(--text-dim);text-transform:uppercase;letter-spacing:.5px;">Franja 1</span>
+      </div>
+      <div class="disp-grid-2" style="margin-bottom:8px;">
+        <div><label class="form-label">Desde</label><input class="form-input franja-desde" type="time" value="09:00"></div>
+        <div><label class="form-label">Hasta</label><input class="form-input franja-hasta" type="time" value="10:00"></div>
+      </div>
+      <div class="disp-mb"><input class="form-input franja-motivo" type="text" placeholder="Motivo (opcional)"></div>
+    </div>`;
+  franjaRowCount = 1;
+
+  renderFranjas();
+  showToast('✓ ' + agregadas + ' franja' + (agregadas > 1 ? 's' : '') + ' bloqueada' + (agregadas > 1 ? 's' : ''), 'info');
 }
 
 function eliminarFranja(i) {
@@ -1504,12 +1637,46 @@ async function confirmBooking() {
         <div class="sd-item"><div class="sd-label">Fecha</div><div class="sd-val">${cap}</div></div>
         <div class="sd-item"><div class="sd-label">Horario</div><div class="sd-val">${selSlot} hs</div></div>
         <div class="sd-item"><div class="sd-label">Duración</div><div class="sd-val">${selDur} minutos</div></div>
-        <div class="sd-item"><div class="sd-label">Profesional</div><div class="sd-val">Dr. Demo</div></div>
+        <div class="sd-item"><div class="sd-label">Profesional</div><div class="sd-val">Dr. José Jiménez</div></div>
       `;
       document.getElementById('booking-flow').style.display = 'none';
       document.getElementById('success-card').classList.add('visible');
       window.scrollTo({ top: 0, behavior: 'smooth' });
       await loadTurnosMes();
+
+      // Generar link WhatsApp confirmación al profesional
+      try {
+        const telProf = '5493816096063'; // Demo // WhatsApp Dr. Jiménez
+        const fechaWA = selDate.toLocaleDateString('es-AR', { weekday:'long', day:'numeric', month:'long' });
+        const fechaCap = fechaWA.charAt(0).toUpperCase() + fechaWA.slice(1);
+        const msgWA = '¡Hola Dr. Jiménez! Confirmé mi turno a través de Agendado.\n\n' +
+          '👤 Nombre: ' + nombre + '\n' +
+          '📅 Fecha: ' + fechaCap + '\n' +
+          '⏰ Horario: ' + selSlot + ' hs (' + selDur + ' min)\n' +
+          (email ? '✉️ Email: ' + email + '\n' : '') +
+          '\n¡Hasta pronto!';
+        const btnWA = document.getElementById('btn-wpp-confirm');
+        if (btnWA) btnWA.href = 'https://wa.me/' + telProf + '?text=' + encodeURIComponent(msgWA);
+      } catch(e) { console.warn('WA link error:', e); }
+
+      // Generar link Google Calendar
+      try {
+        const gcalBase = 'https://calendar.google.com/calendar/render?action=TEMPLATE';
+        const fechaGcal = selDate.toISOString().split('T')[0].replace(/-/g,'');
+        // Calcular hora fin
+        const [hh, mm] = selSlot.split(':').map(Number);
+        const totalMin = hh * 60 + mm + selDur;
+        const hFin = String(Math.floor(totalMin / 60)).padStart(2,'0');
+        const mFin = String(totalMin % 60).padStart(2,'0');
+        const gcalStart = fechaGcal + 'T' + selSlot.replace(':','') + '00';
+        const gcalEnd   = fechaGcal + 'T' + hFin + mFin + '00';
+        const gcalTitle = encodeURIComponent('Turno con Dr. José María Jiménez');
+        const gcalLoc   = encodeURIComponent('Consultorios LIBERTAD, Libertad 122, Tucumán');
+        const gcalDesc  = encodeURIComponent('Turno reservado a través de Agendado.link\nContacto: +54 9 383 400-7226');
+        const gcalUrl = gcalBase + '&text=' + gcalTitle + '&dates=' + gcalStart + '/' + gcalEnd + '&location=' + gcalLoc + '&details=' + gcalDesc + '&crm=POPUP&crm_minutes=1440';
+        const btnGcal = document.getElementById('btn-gcal');
+        if (btnGcal) btnGcal.href = gcalUrl;
+      } catch(e) { console.warn('GCal link error:', e); }
     } else {
       throw new Error('Respuesta inesperada de Supabase');
     }
@@ -1540,12 +1707,14 @@ function resetFlow() {
 function activarPanel() {
   document.getElementById('panel-login').style.display = 'none';
   document.getElementById('panel-inner').style.display = 'block';
+  // Mostrar nombre en header panel
+  const profNameEl = document.getElementById('panel-prof-name');
+  if (profNameEl) profNameEl.style.display = 'block';
   panelYear = today.getFullYear();
   panelMonth = today.getMonth();
   panelSelDate = new Date(today.getFullYear(), today.getMonth(), today.getDate());
   renderPanelMonthGrid();
   loadTurnosMes_panel();
-  loadFreeCounter();
   renderPanelDay();
   loadPacientes();
   loadPanelStats();
@@ -1623,7 +1792,7 @@ let turnosPorDia = {};
 
 const panelMonthNames = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
 
-function changeMonth(dir) {
+function changePanelMonth(dir) {
   panelMonth += dir;
   if (panelMonth < 0) { panelMonth = 11; panelYear--; }
   if (panelMonth > 11) { panelMonth = 0; panelYear++; }
@@ -1688,8 +1857,9 @@ function renderPanelMonthGrid() {
       var btn = document.createElement('button');
       btn.type = 'button';
 
-      var bg = isSelected ? 'var(--blue)' : hasTurnos && !isPast ? 'var(--blue-pale)' : 'var(--white)';
-      var border = isSelected ? 'var(--blue)' : hasTurnos && !isPast ? 'rgba(26,79,138,.25)' : 'var(--border)';
+      var isFeriadoPanel = esFeriado(dateStr);
+      var bg = isSelected ? 'var(--blue)' : hasTurnos && !isPast ? 'var(--blue-pale)' : isFeriadoPanel && !isPast ? 'var(--rose-pale)' : 'var(--white)';
+      var border = isSelected ? 'var(--blue)' : hasTurnos && !isPast ? 'rgba(26,79,138,.25)' : isFeriadoPanel && !isPast ? 'rgba(225,29,72,.2)' : 'var(--border)';
 
       btn.style.cssText = 'display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;padding:6px 2px;border-radius:10px;border:1.5px solid ' + border + ';background:' + bg + ';cursor:pointer;transition:all .2s;min-height:56px;width:100%';
 
@@ -1704,6 +1874,14 @@ function renderPanelMonthGrid() {
         var dot = document.createElement('span');
         dot.style.cssText = 'width:5px;height:5px;border-radius:50%;background:var(--teal);';
         btn.appendChild(dot);
+      }
+
+      // Feriado badge
+      if (isFeriadoPanel && !isPast && !isSelected) {
+        var fBadge = document.createElement('span');
+        fBadge.style.cssText = 'font-size:8px;font-weight:800;border-radius:6px;padding:1px 4px;line-height:1.4;background:var(--rose);color:white;letter-spacing:.3px;';
+        fBadge.textContent = 'Fer.';
+        btn.appendChild(fBadge);
       }
 
       // Turno badge
@@ -1771,6 +1949,7 @@ async function renderPanelDay() {
         <div class="turno-actions">
           ${t.estado !== 'confirmado' ? `<button class="btn-action confirm" onclick="cambiarEstado('${t.id}','confirmado')">✓ Confirmar</button>` : ''}
           ${t.estado !== 'cancelado'  ? `<button class="btn-action cancel"  onclick="cambiarEstado('${t.id}','cancelado')">✗ Cancelar</button>`  : ''}
+          <button class="btn-action edit" onclick="abrirEditarTurno('${t.id}','${t.paciente_nombre}','${t.paciente_tel}','${t.fecha}','${t.hora.substring(0,5)}')">✏️ Editar</button>
           <button class="btn-action wpp" onclick="window.open('https://wa.me/${'+'}${t.paciente_tel.replace(/\D/g,'')}','_blank')">💬 WA</button>
         </div>
       </div>`).join('');
@@ -1848,7 +2027,7 @@ function switchPanelTab(id, btn) {
   document.getElementById('ptab-' + id).classList.add('active');
   btn.classList.add('active');
   if (id === 'pacientes') loadPacientes();
-  if (id === 'config') { loadConfig(); renderDiasEspeciales(); renderBloqueos(); renderFranjas(); const ts = new Date().toISOString().split('T')[0]; ['blq-desde','blq-hasta','franja-fecha'].forEach(id => { const el=document.getElementById(id); if(el) el.min=ts; }); }
+  if (id === 'config') loadConfig();
 }
 
 // ══════════════════════════════════════
@@ -1892,31 +2071,51 @@ async function guardarConfig() {
 
   const dias = [...document.querySelectorAll('.dia-btn.active')].map(b => b.dataset.dia);
   const nombre = document.getElementById('cfg-nombre').value.trim();
-  if (!nombre) {
-    showToast('El nombre no puede estar vacío.');
-    btn.disabled = false; btn.textContent = 'Guardar cambios'; return;
-  }
-
   const titulo = document.getElementById('cfg-titulo') ? document.getElementById('cfg-titulo').value.trim() : '';
   const especialidad = document.getElementById('cfg-especialidad').value.trim();
   const matricula = document.getElementById('cfg-matricula') ? document.getElementById('cfg-matricula').value.trim() : '';
   const otro = document.getElementById('cfg-otro') ? document.getElementById('cfg-otro').value.trim() : '';
 
+  if (!nombre) {
+    showToast('El nombre no puede estar vacío.');
+    btn.disabled = false; btn.textContent = 'Guardar cambios'; return;
+  }
+
+  // Guardar horario en localStorage para generateSlots
+  const hi1val = document.getElementById('cfg-hora-inicio').value;
+  const hf1val = document.getElementById('cfg-hora-fin').value;
+  const tardeSaved = document.getElementById('toggle-tarde') && document.getElementById('toggle-tarde').classList.contains('on');
+  localStorage.setItem('agendado_hora_inicio', hi1val);
+  localStorage.setItem('agendado_hora_fin',    hf1val);
+  if (tardeSaved) {
+    localStorage.setItem('agendado_hora_inicio2', document.getElementById('cfg-hora-inicio2').value);
+    localStorage.setItem('agendado_hora_fin2',    document.getElementById('cfg-hora-fin2').value);
+  }
+
   const payload = {
-    nombre, titulo, especialidad, matricula, otro,
+    nombre,
+    titulo,
+    especialidad,
+    matricula,
     consultorio:   document.getElementById('cfg-consultorio').value.trim(),
     direccion:     document.getElementById('cfg-direccion').value.trim(),
     telefono:      document.getElementById('cfg-telefono').value.trim(),
     email:         document.getElementById('cfg-email').value.trim(),
-    horario_inicio: document.getElementById('cfg-hora-inicio') ? document.getElementById('cfg-hora-inicio').value + ':00' : '16:00:00',
-    horario_fin:    document.getElementById('cfg-hora-fin') ? document.getElementById('cfg-hora-fin').value + ':00' : '19:30:00',
+    otro,
+    horario_inicio: hi1val + ':00',
+    horario_fin:    hf1val + ':00',
     dias_atencion:  dias,
   };
 
   try {
     await sbPatch(`profesionales?id=eq.${PROFESIONAL_ID}`, payload);
     showToast('✓ Cambios guardados correctamente', 'info');
+    // Persistir dias de atencion para calendario paciente
+    localStorage.setItem('agendado_dias_atencion', JSON.stringify(dias));
+    renderCalendar();
+    // Actualizar chips del hero en tiempo real
     actualizarChipsHero(especialidad, matricula, payload.consultorio, otro);
+    // Actualizar nombre en hero
     const heroName = document.querySelector('.hero-name');
     if (heroName) heroName.textContent = nombre;
   } catch(e) {
@@ -1926,6 +2125,19 @@ async function guardarConfig() {
 
   btn.disabled = false;
   btn.textContent = 'Guardar cambios';
+}
+
+function actualizarChipsHero(especialidad, matricula, consultorio, otro) {
+  const wrap = document.getElementById('hero-spec-chips');
+  if (!wrap) return;
+  wrap.innerHTML = '';
+  const chips = [especialidad, matricula, consultorio, otro].filter(c => c && c.trim());
+  chips.forEach(c => {
+    const span = document.createElement('span');
+    span.className = 'spec-chip';
+    span.textContent = c;
+    wrap.appendChild(span);
+  });
 }
 
 
@@ -1959,6 +2171,12 @@ document.addEventListener('DOMContentLoaded', function() {
   if (overlay) {
     overlay.addEventListener('click', function(e) {
       if (e.target === this) cerrarNuevoTurno();
+    });
+  }
+  var overlayEdit = document.getElementById('modal-editar-turno');
+  if (overlayEdit) {
+    overlayEdit.addEventListener('click', function(e) {
+      if (e.target === this) cerrarEditarTurno();
     });
   }
 });
@@ -2003,15 +2221,35 @@ async function guardarNuevoTurno() {
       await loadPanelStats();
       showToast('✓ Turno guardado correctamente', 'info');
 
-      // Abrir WhatsApp
+      // Capturar todos los valores ANTES de cerrar el modal
       var telLimpio = tel.replace(/[^0-9]/g, '');
-      var waMsg = 'Hola ' + nombre + ', su turno con el Dr. Gonzalez Gomez esta confirmado. Horario: ' + hora + ' hs (' + dur + ' min). Clinica CEMIJ, Jujuy 173, Tucuman. Le recordaremos 24hs antes.';
+      if (!telLimpio.startsWith('54')) telLimpio = '5493816096063'; // Demo siempre a Seba
+      var fechaSnap = new Date(fechaStr + 'T12:00:00');
+      var fechaLabel = fechaSnap.toLocaleDateString('es-AR', { weekday:'long', day:'numeric', month:'long' });
+      var fechaCap = fechaLabel.charAt(0).toUpperCase() + fechaLabel.slice(1);
+      var motivoLabel = motivo !== 'Sin especificar' ? '\n📋 Motivo: ' + motivo : '';
+      var waMsg = '¡Hola ' + nombre + '! Tu turno en la demo de Agendado quedó confirmado.\n\n📅 ' + fechaCap + '\n⏰ ' + hora + ' hs (' + dur + ' min)\n📍 Consultorios LIBERTAD, Libertad 122, Tucumán' + motivoLabel + '\n\n¡Nos vemos!';
       var waUrl = 'https://wa.me/' + telLimpio + '?text=' + encodeURIComponent(waMsg);
-      setTimeout(function() {
-        if (confirm('Enviar confirmacion por WhatsApp al paciente?')) {
-          window.open(waUrl, '_blank');
-        }
-      }, 600);
+      // Generar link Google Calendar para el turno asignado por el panel
+      try {
+        var gcalBase2 = 'https://calendar.google.com/calendar/render?action=TEMPLATE';
+        var fechaGcal2 = fechaStr.replace(/-/g,'');
+        var hh2 = parseInt(hora.split(':')[0]);
+        var mm2 = parseInt(hora.split(':')[1]);
+        var totalMin2 = hh2 * 60 + mm2 + dur;
+        var hFin2 = String(Math.floor(totalMin2/60)).padStart(2,'0');
+        var mFin2 = String(totalMin2%60).padStart(2,'0');
+        var gcalUrl2 = gcalBase2 +
+          '&text=' + encodeURIComponent('Turno · Demo Agendado') +
+          '&dates=' + fechaGcal2 + 'T' + hora.replace(':','') + '00/' + fechaGcal2 + 'T' + hFin2 + mFin2 + '00' +
+          '&location=' + encodeURIComponent('Consultorios LIBERTAD, Libertad 122, Tucumán') +
+          '&details=' + encodeURIComponent('Turno asignado por el Dr. Jiménez\nContacto: +54 9 383 400-7226') +
+          '&crm=POPUP&crm_minutes=1440';
+        waMsg += '\n\n📅 Agregá el turno a tu Google Calendar:\n' + gcalUrl2;
+        waUrl = 'https://wa.me/' + telLimpio + '?text=' + encodeURIComponent(waMsg);
+      } catch(e2) { console.warn('GCal panel error:', e2); }
+
+      setTimeout(function() { window.open(waUrl, '_blank'); }, 800);
 
     } else {
       throw new Error('Error al guardar');
@@ -2023,6 +2261,273 @@ async function guardarNuevoTurno() {
 
   btn.disabled = false;
   btn.textContent = 'Guardar turno →';
+}
+
+
+// ══════════════════════════════════════
+// TOGGLE TARDE
+// ══════════════════════════════════════
+function toggleTarde(el) {
+  el.classList.toggle('on');
+  const wrap = document.getElementById('wrap-tarde');
+  const isOn = el.classList.contains('on');
+  wrap.style.display = isOn ? 'grid' : 'none';
+  localStorage.setItem('agendado_turno_tarde', isOn ? '1' : '0');
+}
+
+function initToggleTarde() {
+  const saved = localStorage.getItem('agendado_turno_tarde');
+  if (saved === '1') {
+    const tog = document.getElementById('toggle-tarde');
+    const wrap = document.getElementById('wrap-tarde');
+    if (tog) tog.classList.add('on');
+    if (wrap) wrap.style.display = 'grid';
+  }
+}
+
+// ══════════════════════════════════════
+// TOGGLES NOTIFICACIONES
+// ══════════════════════════════════════
+function toggleNotif(el, key) {
+  el.classList.toggle('on');
+  const notifs = JSON.parse(localStorage.getItem('agendado_notifs') || '{}');
+  notifs[key] = el.classList.contains('on');
+  localStorage.setItem('agendado_notifs', JSON.stringify(notifs));
+}
+
+function initTogglesNotif() {
+  const notifs = JSON.parse(localStorage.getItem('agendado_notifs') || '{}');
+  const defaults = { 'recordatorio': true, 'nueva-reserva': true, 'resumen-diario': false };
+  Object.keys(defaults).forEach(key => {
+    const val = notifs[key] !== undefined ? notifs[key] : defaults[key];
+    const el = document.getElementById('tog-' + key);
+    if (el) { if (val) el.classList.add('on'); else el.classList.remove('on'); }
+  });
+}
+
+// ══════════════════════════════════════
+// FERIADOS ARGENTINA 2025-2026
+// ══════════════════════════════════════
+const FERIADOS_ARG = [
+  '2025-01-01','2025-03-03','2025-03-04','2025-03-24','2025-04-02',
+  '2025-04-18','2025-05-01','2025-05-25','2025-06-16','2025-06-20',
+  '2025-07-09','2025-08-17','2025-10-12','2025-11-20','2025-12-08','2025-12-25',
+  '2026-01-01','2026-02-16','2026-02-17','2026-03-24','2026-04-02',
+  '2026-04-03','2026-05-01','2026-05-25','2026-06-15','2026-06-20',
+  '2026-07-09','2026-08-17','2026-10-12','2026-11-20','2026-12-08','2026-12-25'
+];
+
+function esFeriado(fechaStr) {
+  const usarFeriados = localStorage.getItem('agendado_feriados') !== '0';
+  return usarFeriados && FERIADOS_ARG.includes(fechaStr);
+}
+
+
+
+function toggleFeriados(el) {
+  el.classList.toggle('on');
+  localStorage.setItem('agendado_feriados', el.classList.contains('on') ? '1' : '0');
+  renderCalendar();
+}
+
+function initFeriados() {
+  const val = localStorage.getItem('agendado_feriados');
+  const el = document.getElementById('tog-feriados');
+  if (el && val === '0') el.classList.remove('on');
+}
+
+
+// ══════════════════════════════════════
+// WA OBLIGATORIO — control de flujo
+// ══════════════════════════════════════
+function onWppSent() {
+  // Mostrar botón de volver después de tocar WA
+  setTimeout(function() {
+    showReset();
+  }, 1000);
+}
+
+function showReset() {
+  const wrap = document.getElementById('btn-reset-wrap');
+  const skip = document.getElementById('skip-wpp');
+  if (wrap) wrap.style.display = 'block';
+  if (skip) skip.style.display = 'none';
+}
+
+
+// ══════════════════════════════════════
+// EDITAR TURNO
+// ══════════════════════════════════════
+let editTurnoId = null;
+let editTurnoTel = null;
+let editTurnoNombre = null;
+
+function abrirEditarTurno(id, nombre, tel, fecha, hora) {
+  editTurnoId = id;
+  editTurnoTel = tel;
+  editTurnoNombre = nombre;
+
+  // Mostrar datos del paciente (solo lectura)
+  document.getElementById('edit-paciente-label').textContent = 'Modificá fecha u hora del turno';
+  document.getElementById('edit-nombre-display').textContent = nombre;
+  document.getElementById('edit-tel-display').textContent = tel;
+
+  // Pre-cargar fecha y hora actuales
+  document.getElementById('edit-fecha').value = fecha;
+  document.getElementById('edit-hora').value = hora;
+
+  // Min fecha = hoy
+  document.getElementById('edit-fecha').min = new Date().toISOString().split('T')[0];
+
+  document.getElementById('modal-editar-turno').classList.add('open');
+}
+
+function cerrarEditarTurno() {
+  document.getElementById('modal-editar-turno').classList.remove('open');
+  editTurnoId = null;
+  editTurnoTel = null;
+  editTurnoNombre = null;
+}
+
+async function guardarEdicion() {
+  const fecha = document.getElementById('edit-fecha').value;
+  const hora  = document.getElementById('edit-hora').value;
+
+  if (!fecha || !hora) { showToast('Completá fecha y hora.'); return; }
+
+  const btn = document.getElementById('btn-guardar-edicion');
+  btn.disabled = true;
+  btn.innerHTML = '<span class="spinner"></span>Guardando...';
+
+  try {
+    await sbPatch(`turnos?id=eq.${editTurnoId}`, {
+      fecha: fecha,
+      hora:  hora + ':00'
+    });
+
+    // Actualizar vista
+    await renderPanelDay();
+    await loadPanelStats();
+    cerrarEditarTurno();
+    showToast('✓ Turno actualizado', 'info');
+
+    // Abrir WA con mensaje de reprogramación
+    const telLimpio = editTurnoTel.replace(/[^0-9]/g, '');
+    const fechaLabel = new Date(fecha + 'T12:00:00').toLocaleDateString('es-AR', {
+      weekday: 'long', day: 'numeric', month: 'long'
+    });
+    const fechaCap = fechaLabel.charAt(0).toUpperCase() + fechaLabel.slice(1);
+    const msgReprog = '¡Hola ' + editTurnoNombre + '! Te informamos que tu turno fue reprogramado.\n\n' +
+      '📅 Nueva fecha: ' + fechaCap + '\n' +
+      '⏰ Nuevo horario: ' + hora + ' hs\n' +
+      '📍 Consultorios LIBERTAD, Libertad 122, Tucumán\n\n' +
+      'Ante cualquier consulta escribinos por WhatsApp. ¡Hasta pronto!';
+    const waUrl = 'https://wa.me/' + telLimpio + '?text=' + encodeURIComponent(msgReprog);
+    setTimeout(function() { window.open(waUrl, '_blank'); }, 600);
+
+  } catch(e) {
+    showToast('Error al actualizar el turno. Intentá de nuevo.');
+    console.error(e);
+  }
+
+  btn.disabled = false;
+  btn.textContent = 'Guardar cambios →';
+}
+
+
+// ══════════════════════════════════════
+// DEMO MODE — Turnos de ejemplo para el calendario
+// ══════════════════════════════════════
+const DEMO_MODE = true;
+
+// Turnos de ejemplo para mostrar en el panel
+const yyyy = today.getFullYear();
+const mm   = String(today.getMonth() + 1).padStart(2,'0');
+const dd   = String(today.getDate()).padStart(2,'0');
+const mañana = new Date(today); mañana.setDate(today.getDate() + 1);
+const ddm  = String(mañana.getDate()).padStart(2,'0');
+
+const DEMO_TURNOS = [
+  { id:'demo-1', profesional_id:'demo-agendado', paciente_nombre:'Ana García',    paciente_tel:'+54 381 555 0001', paciente_email:'ana@mail.com',    motivo:'Primera consulta / Evaluación', fecha: yyyy+'-'+mm+'-'+dd,  hora:'09:00:00', duracion:50, estado:'confirmado' },
+  { id:'demo-2', profesional_id:'demo-agendado', paciente_nombre:'Carlos López',   paciente_tel:'+54 381 555 0002', paciente_email:'carlos@mail.com', motivo:'Sesión individual',             fecha: yyyy+'-'+mm+'-'+dd,  hora:'10:00:00', duracion:50, estado:'confirmado' },
+  { id:'demo-3', profesional_id:'demo-agendado', paciente_nombre:'María Fernández',paciente_tel:'+54 381 555 0003', paciente_email:'',                motivo:'Ansiedad / Estrés',             fecha: yyyy+'-'+mm+'-'+dd,  hora:'11:00:00', duracion:50, estado:'pendiente'  },
+  { id:'demo-4', profesional_id:'demo-agendado', paciente_nombre:'Luis Rodríguez', paciente_tel:'+54 381 555 0004', paciente_email:'',                motivo:'Terapia familiar',              fecha: yyyy+'-'+mm+'-'+ddm, hora:'09:00:00', duracion:50, estado:'confirmado' },
+  { id:'demo-5', profesional_id:'demo-agendado', paciente_nombre:'Sofía Martínez', paciente_tel:'+54 381 555 0005', paciente_email:'sofia@mail.com',  motivo:'Sesión individual',             fecha: yyyy+'-'+mm+'-'+ddm, hora:'10:00:00', duracion:50, estado:'confirmado' },
+];
+
+// Interceptar sbGet para devolver turnos de demo
+const _sbGetReal = sbGet;
+window.sbGet = async function(query) {
+  if (DEMO_MODE) {
+    if (query.includes('turnos')) {
+      // Filtrar según la query
+      let result = [...DEMO_TURNOS];
+      // Filtro por fecha
+      const fechaMatch = query.match(/fecha=eq\.([0-9-]+)/);
+      if (fechaMatch) result = result.filter(t => t.fecha === fechaMatch[1]);
+      // Filtro por mes (gte/lte)
+      const gteMatch = query.match(/fecha=gte\.([0-9-]+)/);
+      const lteMatch = query.match(/fecha=lte\.([0-9-]+)/);
+      if (gteMatch) result = result.filter(t => t.fecha >= gteMatch[1]);
+      if (lteMatch) result = result.filter(t => t.fecha <= lteMatch[1]);
+      console.log('[DEMO] sbGet turnos:', result.length, 'resultados para', query);
+      return result;
+    }
+    if (query.includes('profesionales')) {
+      return [{ id:'demo-agendado', nombre:'Lic. Demo', titulo:'Psicóloga Clínica', especialidad:'Psicología Clínica', matricula:'MP 0000', consultorio:'Consultorios Demo', direccion:'Tu dirección aquí', telefono:'5493816096063', email:'hola@agendado.link', otro:'', horario_inicio:'09:00:00', horario_fin:'13:00:00', dias_atencion:['lun','mar','mie','jue','vie'] }];
+    }
+    return [];
+  }
+  return _sbGetReal(query);
+};
+
+// Interceptar sbPost — no guardar realmente
+const _sbPostReal = sbPost;
+window.sbPost = async function(table, data) {
+  if (DEMO_MODE) {
+    console.log('[DEMO] sbPost interceptado:', table, data);
+    // Agregar turno a DEMO_TURNOS temporalmente para que aparezca en el panel
+    if (table === 'turnos') {
+      const nuevoTurno = { id: 'demo-' + Date.now(), profesional_id:'demo-agendado', ...data };
+      DEMO_TURNOS.push(nuevoTurno);
+      return [nuevoTurno];
+    }
+    return [{ id: 'demo-' + Date.now(), ...data }];
+  }
+  return _sbPostReal(table, data);
+};
+
+// Interceptar sbPatch
+const _sbPatchReal = sbPatch;
+window.sbPatch = async function(query, data) {
+  if (DEMO_MODE) {
+    console.log('[DEMO] sbPatch interceptado:', query, data);
+    // Actualizar en DEMO_TURNOS
+    const idMatch = query.match(/id=eq\.([^&]+)/);
+    if (idMatch) {
+      const idx = DEMO_TURNOS.findIndex(t => t.id === idMatch[1]);
+      if (idx > -1) Object.assign(DEMO_TURNOS[idx], data);
+    }
+    return [{ ...data }];
+  }
+  return _sbPatchReal(query, data);
+};
+
+// Interceptar sbDelete
+if (typeof sbDelete !== 'undefined') {
+  const _sbDeleteReal = sbDelete;
+  window.sbDelete = async function(query) {
+    if (DEMO_MODE) {
+      console.log('[DEMO] sbDelete interceptado:', query);
+      const idMatch = query.match(/id=eq\.([^&]+)/);
+      if (idMatch) {
+        const idx = DEMO_TURNOS.findIndex(t => t.id === idMatch[1]);
+        if (idx > -1) DEMO_TURNOS.splice(idx, 1);
+      }
+      return [];
+    }
+    return _sbDeleteReal(query);
+  };
 }
 
 // ══ INIT ══
@@ -2067,7 +2572,7 @@ if ('serviceWorker' in navigator) {
     </div>
     <div class="form-group">
       <label class="form-label">Horario</label>
-      <input class="form-input" type="time" id="nt-hora" value="16:00">
+      <input class="form-input" type="time" id="nt-hora" value="08:30">
     </div>
     <div class="form-group">
       <label class="form-label">Duración</label>
@@ -2080,12 +2585,13 @@ if ('serviceWorker' in navigator) {
       <label class="form-label">Motivo de consulta</label>
       <select class="form-select" id="nt-motivo">
         <option value="">Seleccioná el motivo...</option>
-        <option>Consulta inicial / Evaluación</option>
-        <option>Cirugía programada</option>
-        <option>Control postoperatorio</option>
-        <option>Urgencia / Dolor</option>
-        <option>Extracción compleja</option>
-        <option>Implante</option>
+        <option>Primera consulta / Evaluación</option>
+        <option>Sesión individual</option>
+        <option>Terapia de pareja</option>
+        <option>Terapia familiar</option>
+        <option>Ansiedad / Estrés</option>
+        <option>Seguimiento</option>
+        <option>Urgencia</option>
         <option>Otro</option>
       </select>
     </div>
@@ -2094,5 +2600,37 @@ if ('serviceWorker' in navigator) {
     </button>
   </div>
 </div>
+
+<!-- ── MODAL EDITAR TURNO ── -->
+<div class="modal-overlay" id="modal-editar-turno">
+  <div class="modal-sheet">
+    <div class="modal-handle"></div>
+    <button class="modal-close" onclick="cerrarEditarTurno()">✕</button>
+    <h3 class="modal-title">Editar turno</h3>
+    <p class="modal-sub" id="edit-paciente-label">Cargando...</p>
+
+    <!-- Datos paciente — solo lectura -->
+    <div style="background:var(--snow);border:1px solid var(--border);border-radius:10px;padding:12px 14px;margin-bottom:16px;">
+      <div style="font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--text-dim);margin-bottom:8px;">Paciente</div>
+      <div style="font-size:14px;font-weight:700;color:var(--text);margin-bottom:4px;" id="edit-nombre-display">—</div>
+      <div style="font-size:12px;color:var(--text-mid);font-family:'DM Mono',monospace;" id="edit-tel-display">—</div>
+    </div>
+
+    <!-- Fecha y hora editables -->
+    <div class="form-group">
+      <label class="form-label">Nueva fecha <span style="color:var(--rose)">*</span></label>
+      <input class="form-input" type="date" id="edit-fecha">
+    </div>
+    <div class="form-group">
+      <label class="form-label">Nueva hora <span style="color:var(--rose)">*</span></label>
+      <input class="form-input" type="time" id="edit-hora">
+    </div>
+
+    <button class="btn-confirm" id="btn-guardar-edicion" onclick="guardarEdicion()">
+      Guardar cambios →
+    </button>
+  </div>
+</div>
+
 </body>
 </html>
