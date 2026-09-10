@@ -449,7 +449,7 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--snow);color:var
       <input type="file" id="avatar-input" accept="image/*" onchange="handleAvatar(event)">
     </div>
     <div style="text-align:center;opacity:0;animation:fadeUp .4s .05s ease forwards">
-      <div class="hero-badge">🦴 Ortodoncia Dedicación Exclusiva</div>
+      <div class="hero-badge">🧠 Psicología Clínica</div>
     </div>
     <h1 class="hero-name">Lic. Ana Torres</h1>
     <div class="hero-spec" id="hero-spec-chips">
@@ -777,27 +777,27 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--snow);color:var
 
           <div class="form-group">
             <label class="form-label">Título <span style="color:var(--rose)">*</span></label>
-            <input class="form-input" id="cfg-titulo" type="text" placeholder="Odontólogo / Médico / Lic. en...">
+            <input class="form-input" id="cfg-titulo" type="text" placeholder="Psicóloga Clínica">
           </div>
 
           <div class="form-group">
             <label class="form-label">Especialidad <span style="color:var(--rose)">*</span></label>
-            <input class="form-input" id="cfg-especialidad" type="text" placeholder="Ortodoncia">
+            <input class="form-input" id="cfg-especialidad" type="text" placeholder="Psicología Clínica">
           </div>
 
           <div class="form-group">
             <label class="form-label">Matrícula <span style="color:var(--text-dim);font-style:italic;font-weight:400">(opcional)</span></label>
-            <input class="form-input" id="cfg-matricula" type="text" placeholder="MP 2562">
+            <input class="form-input" id="cfg-matricula" type="text" placeholder="MP 1234">
           </div>
 
           <div class="form-group">
             <label class="form-label">Consultorio / Estudio <span style="color:var(--text-dim);font-style:italic;font-weight:400">(opcional)</span></label>
-            <input class="form-input" id="cfg-consultorio" type="text" placeholder="Consultorios LIBERTAD">
+            <input class="form-input" id="cfg-consultorio" type="text" placeholder="Consultorios Centro">
           </div>
 
           <div class="form-group">
             <label class="form-label">Dirección <span style="color:var(--rose)">*</span></label>
-            <input class="form-input" id="cfg-direccion" type="text" placeholder="Libertad 122, San Miguel de Tucumán">
+            <input class="form-input" id="cfg-direccion" type="text" placeholder="Tu dirección aquí">
           </div>
 
           <div class="form-group">
@@ -1683,7 +1683,7 @@ async function confirmBooking() {
         const gcalEnd   = fechaGcal + 'T' + hFin + mFin + '00';
         const gcalTitle = encodeURIComponent('Turno con Lic. Ana Torres');
         const gcalLoc   = encodeURIComponent('Consultorios Centro · San Miguel de Tucumán');
-        const gcalDesc  = encodeURIComponent('Turno reservado a través de Agendado.link\nContacto: +54 9 383 400-7226');
+        const gcalDesc  = encodeURIComponent('Turno reservado a través de Agendado.link\nContacto: +54 9 381 542-0044');
         const gcalUrl = gcalBase + '&text=' + gcalTitle + '&dates=' + gcalStart + '/' + gcalEnd + '&location=' + gcalLoc + '&details=' + gcalDesc + '&crm=POPUP&crm_minutes=1440';
         const btnGcal = document.getElementById('btn-gcal');
         if (btnGcal) btnGcal.href = gcalUrl;
@@ -2259,14 +2259,14 @@ async function guardarNuevoTurno() {
           '&dates=' + fechaGcal2 + 'T' + hora.replace(':','') + '00/' +
                       fechaGcal2 + 'T' + hFin2 + mFin2 + '00' +
           '&location=' + encodeURIComponent('Consultorios Centro · San Miguel de Tucumán') +
-          '&details=' + encodeURIComponent('Turno asignado por el Lic. Torres\nContacto: +54 9 383 400-7226') +
+          '&details=' + encodeURIComponent('Turno asignado por la Lic. Torres\nContacto: +54 9 381 542-0044') +
           '&crm=POPUP&crm_minutes=1440';
       } catch(ge) { console.warn('GCal error:', ge); }
 
       // Abrir WhatsApp con todos los datos + link GCal
       var telLimpio = tel.replace(/[^0-9]/g, '');
       if (!telLimpio.startsWith('54')) telLimpio = '54' + telLimpio;
-      var waMsg = '¡Hola ' + nombre + '! Tu turno con el Lic. Torres quedó confirmado.' +
+      var waMsg = '¡Hola ' + nombre + '! Tu turno con la Lic. Torres quedó confirmado.' +
         '\n\n📅 ' + fechaCap +
         '\n⏰ ' + hora + ' hs (' + dur + ' min)' +
         '\n📍 Consultorios Centro · San Miguel de Tucumán' +
