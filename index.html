@@ -24,7 +24,7 @@
 <meta property="og:locale" content="es_AR" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Agendado · Demo Interactiva · Tu agenda online" />
-<meta name="twitter:description" content="Probá Agendado en vivo. Así funciona tu agenda online personalizada. Sin llamadas, sin complicaciones." />
+<meta name="twitter:description" content="Probá Agendado en vivo. Así funciona tu agenda online personalizada." />
 <meta name="twitter:image" content="https://www.agendado.link/og-image.png" />
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
 <style>
@@ -391,6 +391,20 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--snow);color:var
 .btn-action.edit{border-color:rgba(26,79,138,.2);color:var(--blue);}
 .btn-action.edit:hover{background:var(--blue-pale);}
 
+
+/* ── BLOQUEO RECURRENTE ── */
+.recur-item{display:flex;gap:12px;align-items:flex-start;padding:11px 14px;background:var(--white);border:1px solid var(--border);border-radius:10px;margin-bottom:8px;}
+.recur-day-badge{min-width:40px;height:40px;border-radius:8px;background:var(--rose-pale);border:1px solid rgba(225,29,72,.2);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;color:var(--rose);text-transform:uppercase;letter-spacing:.5px;flex-shrink:0;}
+.recur-info{flex:1;}
+.recur-label{font-size:13px;font-weight:700;color:var(--text);margin-bottom:2px;}
+.recur-detail{font-size:11px;color:var(--text-dim);}
+.recur-del{background:none;border:none;color:var(--text-xdim);font-size:14px;cursor:pointer;padding:4px 8px;border-radius:6px;flex-shrink:0;}
+.recur-del:hover{color:var(--rose);background:var(--rose-pale);}
+
+
+/* ── BLOQUEO RÁPIDO ── */
+.btn-bloqueo-rapido{flex:1;padding:9px 6px;border-radius:10px;font-family:'Plus Jakarta Sans',sans-serif;font-size:11px;font-weight:700;cursor:pointer;transition:all .2s;}
+
 </style>
 </head>
 <body>
@@ -411,7 +425,7 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--snow);color:var
   <!-- DEMO NOTICE -->
   <div style="background:linear-gradient(135deg,#0d9488,#1a4f8a);padding:10px 16px;text-align:center;position:sticky;top:0;z-index:300;">
     <span style="font-size:11px;font-weight:700;color:white;letter-spacing:.5px;">✦ DEMO INTERACTIVA · Los turnos aquí NO se guardan · </span>
-    <a href="https://wa.me/5493816096063?text=Hola%20Seba%2C%20quiero%20mi%20Agendado" target="_blank" style="font-size:11px;font-weight:700;color:rgba(255,255,255,.85);text-decoration:underline;">Quiero el mío →</a>
+    <a href="https://wa.me/5493815420044?text=Hola%20Seba%2C%20quiero%20mi%20Agendado" target="_blank" style="font-size:11px;font-weight:700;color:rgba(255,255,255,.85);text-decoration:underline;">Quiero el mío →</a>
   </div>
   <!-- HEADER LOGO PACIENTE -->
   <div style="position:sticky;top:40px;z-index:200;background:rgba(255,255,255,.97);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:0 18px;height:52px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 1px 4px rgba(26,40,80,.06);">
@@ -430,18 +444,18 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--snow);color:var
 
   <div class="hero">
     <div class="avatar-wrap" onclick="document.getElementById('avatar-input').click()">
-      <div class="avatar-img" id="avatar-display"><img src="data:image/jpeg;base64,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" style="width:100%;height:100%;object-fit:cover;border-radius:50%;"></div>
+      <div class="avatar-img" id="avatar-display" style="display:flex;align-items:center;justify-content:center;font-size:40px;background:var(--blue-pale);border-radius:50%;">🧠</div>
       <div class="avatar-edit">✏️</div>
       <input type="file" id="avatar-input" accept="image/*" onchange="handleAvatar(event)">
     </div>
     <div style="text-align:center;opacity:0;animation:fadeUp .4s .05s ease forwards">
-      <div class="hero-badge">🦷 Odontología · Ortodoncia</div>
+      <div class="hero-badge">🦴 Ortodoncia Dedicación Exclusiva</div>
     </div>
-    <h1 class="hero-name">Lic. Demo · Psicóloga Clínica</h1>
+    <h1 class="hero-name">Lic. Ana Torres</h1>
     <div class="hero-spec" id="hero-spec-chips">
       <span class="spec-chip">Psicología Clínica</span>
-      <span class="spec-chip">MP 0000</span>
-      <span class="spec-chip">Consultorios Demo</span>
+      <span class="spec-chip">MP 1234</span>
+      <span class="spec-chip">Consultorios Centro</span>
     </div>
     <div class="hero-stats">
       <div class="stat-item"><div class="stat-num" id="stat-turnos-mes">—</div><div class="stat-label">Turnos este mes</div></div>
@@ -462,7 +476,7 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--snow);color:var
     </button>
   </nav>
 
-  <a class="fab-wpp" href="https://wa.me/5493816096063" target="_blank">💬</a>
+  <a class="fab-wpp" href="https://wa.me/5493815420044" target="_blank">💬</a>
 
   <!-- TURNO -->
   <div id="sec-turno" class="section active">
@@ -560,7 +574,7 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--snow);color:var
       <!-- PASO OBLIGATORIO: WA -->
       <div class="wpp-step">
         <div class="wpp-step-label">📋 Paso final</div>
-        <div class="wpp-step-title">Enviá este mensaje para completar tu reserva de demo</div>
+        <div class="wpp-step-title">Enviá este mensaje al Lic. Torres para completar tu reserva</div>
         <a id="btn-wpp-confirm" href="#" target="_blank" class="wpp-step-btn" onclick="onWppSent()">
           <span style="font-size:20px;">💬</span> Confirmar por WhatsApp
         </a>
@@ -584,28 +598,25 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--snow);color:var
   <div id="sec-contacto" class="section">
     <p class="sec-eyebrow">Contacto</p>
     <h2 class="sec-title">Encontranos</h2>
-    <p class="sec-sub">Consultorios Demo · Agendado · Tucumán</p>
+    <p class="sec-sub">Consultorios Centro · San Miguel de Tucumán</p>
     <div class="card">
-      <a class="contact-item" href="tel:+5493816096063">
-        <div class="ci-icon">📞</div><div class="ci-info"><div class="ci-label">Teléfono</div><div class="ci-value">+54 9 381 609-6063</div></div><span class="ci-arrow">›</span>
+      <a class="contact-item" href="tel:+5493815420044">
+        <div class="ci-icon">📞</div><div class="ci-info"><div class="ci-label">Teléfono</div><div class="ci-value">+54 9 381 542-0044</div></div><span class="ci-arrow">›</span>
       </a>
-      <a class="contact-item" href="https://wa.me/5493816096063" target="_blank">
-        <div class="ci-icon">💬</div><div class="ci-info"><div class="ci-label">WhatsApp</div><div class="ci-value">+54 9 381 609-6063</div></div><span class="ci-arrow">›</span>
+      <a class="contact-item" href="https://wa.me/5493815420044" target="_blank">
+        <div class="ci-icon">💬</div><div class="ci-info"><div class="ci-label">WhatsApp</div><div class="ci-value">+54 9 381 542-0044</div></div><span class="ci-arrow">›</span>
       </a>
       <a class="contact-item" href="mailto:hola@agendado.link">
         <div class="ci-icon">✉️</div><div class="ci-info"><div class="ci-label">Email</div><div class="ci-value">hola@agendado.link</div></div><span class="ci-arrow">›</span>
       </a>
-      <a class="contact-item" href="https://agendado.link" target="_blank">
-        <div class="ci-icon">🌐</div><div class="ci-info"><div class="ci-label">Web</div><div class="ci-value">agendado.link</div></div><span class="ci-arrow">›</span>
-      </a>
-      <a class="contact-item" href="#" target="_blank">
-        <div class="ci-icon">📍</div><div class="ci-info"><div class="ci-label">Consultorio</div><div class="ci-value" style="color:var(--text-dim);font-style:italic;">Tu dirección aquí</div></div><span class="ci-arrow">›</span>
+      <a class="contact-item" href="https://maps.google.com/?q=San+Miguel+de+Tucuman" target="_blank">
+        <div class="ci-icon">📍</div><div class="ci-info"><div class="ci-label">Consultorio</div><div class="ci-value">Libertad 122 · Consultorios Centro · Tucumán</div></div><span class="ci-arrow">›</span>
       </a>
     </div>
     <p class="redes-label">Más opciones</p>
     <div class="redes-grid">
-      <a class="red-social" href="https://wa.me/5493816096063" target="_blank"><span style="font-size:18px">💬</span> WhatsApp</a>
-      <a class="red-social" href="#" target="_blank"><span style="font-size:18px">🗺️</span> Cómo llegar</a>
+      <a class="red-social" href="https://wa.me/5493815420044" target="_blank"><span style="font-size:18px">💬</span> WhatsApp</a>
+      <a class="red-social" href="https://maps.google.com/?q=San+Miguel+de+Tucuman" target="_blank"><span style="font-size:18px">🗺️</span> Cómo llegar</a>
     </div>
   </div>
 
@@ -613,18 +624,19 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--snow);color:var
   <div id="sec-info" class="section">
     <p class="sec-eyebrow">Información</p>
     <h2 class="sec-title">El consultorio</h2>
-    <p class="sec-sub">Consultorios Demo · Agendado · Tucumán</p>
+    <p class="sec-sub">Consultorios Centro · Tucumán</p>
     <div class="info-block">
-      <h3>Lic. Demo · Psicóloga Clínica</h3>
-      <p>Este es un perfil de demostración de Agendado. Tu perfil real tendrá tu nombre, foto, especialidad y datos de contacto propios. Configurado y listo en 48 horas.</p>
+      <h3>Lic. Ana Torres</h3>
+      <p>Psicóloga clínica egresada de la Universidad Nacional de Tucumán (2015). Especializada en terapia cognitivo-conductual y manejo del estrés y ansiedad. Atención individual, de pareja y familiar.</p>
     </div>
     <div class="info-block">
       <h3>Especialidades</h3>
       <div style="margin-top:6px">
         <span class="service-tag">🧠 Psicología Clínica</span>
         <span class="service-tag">💬 Terapia individual</span>
-        <span class="service-tag">👨‍👩‍👧 Terapia familiar</span>
+        <span class="service-tag">👫 Terapia de pareja</span>
         <span class="service-tag">🌿 Ansiedad y estrés</span>
+        <span class="service-tag">👨‍👩‍👧 Terapia familiar</span>
       </div>
     </div>
     <div class="info-block">
@@ -634,7 +646,7 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--snow);color:var
         <div class="horario-row"><span class="horario-dia">Sábado</span><span class="horario-cerrado">Cerrado</span></div>
         <div class="horario-row"><span class="horario-dia">Domingo</span><span class="horario-cerrado">Cerrado</span></div>
       </div>
-      <p style="margin-top:12px;font-size:12px;color:var(--text-dim)">Turnos de 30 min o 1 hora según tipo de consulta. Atención particular — sin obras sociales.</p>
+      <p style="margin-top:12px;font-size:12px;color:var(--text-dim)">Sesiones de 50 minutos. Atención particular. Se aceptan algunas obras sociales.</p>
     </div>
   </div>
 
@@ -671,7 +683,7 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--snow);color:var
       </a>
       <!-- Lado derecho panel médico -->
       <div style="display:flex;align-items:center;gap:8px;">
-        <span style="font-size:11px;font-weight:600;color:var(--text-mid);display:none;" id="panel-prof-name">Lic. Demo</span>
+        <span style="font-size:11px;font-weight:600;color:var(--text-mid);display:none;" id="panel-prof-name">Lic. Ana Torres</span>
         <button onclick="switchView()" style="font-size:11px;font-weight:600;color:var(--blue);background:var(--blue-pale);border:1px solid rgba(26,79,138,.15);padding:5px 12px;border-radius:20px;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;transition:all .2s;white-space:nowrap;">👤 Vista paciente</button>
         <button class="btn-logout" onclick="doLogout()">Salir</button>
       </div>
@@ -775,7 +787,7 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--snow);color:var
 
           <div class="form-group">
             <label class="form-label">Matrícula <span style="color:var(--text-dim);font-style:italic;font-weight:400">(opcional)</span></label>
-            <input class="form-input" id="cfg-matricula" type="text" placeholder="Tu matrícula">
+            <input class="form-input" id="cfg-matricula" type="text" placeholder="MP 2562">
           </div>
 
           <div class="form-group">
@@ -785,7 +797,7 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--snow);color:var
 
           <div class="form-group">
             <label class="form-label">Dirección <span style="color:var(--rose)">*</span></label>
-            <input class="form-input" id="cfg-direccion" type="text" placeholder="Tu dirección">
+            <input class="form-input" id="cfg-direccion" type="text" placeholder="Libertad 122, San Miguel de Tucumán">
           </div>
 
           <div class="form-group">
@@ -795,7 +807,7 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--snow);color:var
 
           <div class="form-group">
             <label class="form-label">Email <span style="color:var(--rose)">*</span></label>
-            <input class="form-input" id="cfg-email" type="email" placeholder="hola@agendado.link">
+            <input class="form-input" id="cfg-email" type="email" placeholder="tu@email.com">
           </div>
 
           <div class="form-group" style="margin-bottom:0">
@@ -922,6 +934,7 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--snow);color:var
         <div class="disp-tabs">
           <button class="disp-tab active" onclick="switchDispTab('dias',this)">🚫 Días completos</button>
           <button class="disp-tab" onclick="switchDispTab('franjas',this)">⏰ Franjas horarias</button>
+          <button class="disp-tab" onclick="switchDispTab('recurrente',this)">🔁 Recurrente</button>
         </div>
 
         <!-- Panel: Días completos -->
@@ -961,13 +974,13 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--snow);color:var
 
             <!-- Accesos rápidos mañana/tarde -->
             <div style="display:flex;gap:8px;margin-bottom:12px;">
-              <button onclick="bloqueoRapido('manana')"
-                style="flex:1;padding:9px 6px;border:1.5px solid rgba(217,119,6,.3);border-radius:10px;background:rgba(217,119,6,.07);color:var(--amber);font-family:'Plus Jakarta Sans',sans-serif;font-size:11px;font-weight:700;cursor:pointer;transition:all .2s;"
+              <button class="btn-bloqueo-rapido" onclick="bloqueoRapido('manana')"
+                style="border:1.5px solid rgba(217,119,6,.3);background:rgba(217,119,6,.07);color:var(--amber);"
                 onmouseover="this.style.background='rgba(217,119,6,.14)'" onmouseout="this.style.background='rgba(217,119,6,.07)'">
                 🌅 Bloquear mañana completa
               </button>
-              <button onclick="bloqueoRapido('tarde')"
-                style="flex:1;padding:9px 6px;border:1.5px solid rgba(26,79,138,.2);border-radius:10px;background:var(--blue-pale);color:var(--blue);font-family:'Plus Jakarta Sans',sans-serif;font-size:11px;font-weight:700;cursor:pointer;transition:all .2s;"
+              <button class="btn-bloqueo-rapido" onclick="bloqueoRapido('tarde')"
+                style="border:1.5px solid rgba(26,79,138,.2);background:var(--blue-pale);color:var(--blue);"
                 onmouseover="this.style.background='rgba(26,79,138,.12)'" onmouseout="this.style.background='var(--blue-pale)'">
                 🌆 Bloquear tarde completa
               </button>
@@ -1005,6 +1018,34 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--snow);color:var
           </div>
         </div>
       </div>
+        <!-- Panel: Recurrente -->
+        <div class="disp-panel" id="disp-panel-recurrente">
+          <div id="disp-recurrente-list" style="margin-bottom:12px;"></div>
+          <div class="disp-form">
+            <div class="disp-form-title">🔁 Bloquear día de semana recurrente</div>
+            <p style="font-size:11px;color:var(--text-mid);margin-bottom:10px;line-height:1.5;">Bloqueá todos los días de la semana que elijas. Por ejemplo: todos los lunes.</p>
+            <div class="disp-mb">
+              <label class="form-label">Día de la semana</label>
+              <select class="form-input" id="recur-dia" style="background:var(--snow)">
+                <option value="lun">Lunes</option>
+                <option value="mar">Martes</option>
+                <option value="mie">Miércoles</option>
+                <option value="jue">Jueves</option>
+                <option value="vie">Viernes</option>
+                <option value="sab">Sábado</option>
+                <option value="dom">Domingo</option>
+              </select>
+            </div>
+            <div class="disp-mb">
+              <label class="form-label">Motivo <span style="font-weight:400;font-style:italic;color:var(--text-dim)">(opcional)</span></label>
+              <input class="form-input" id="recur-motivo" type="text" placeholder="Ej: Guardia hospitalaria">
+            </div>
+            <button class="btn-bloquear-dia" onclick="agregarBloqueoRecurrente()" style="background:var(--rose);">
+              🔁 Bloquear este día de semana
+            </button>
+          </div>
+        </div>
+
 
 
     </div>
@@ -1055,7 +1096,7 @@ function showToast(msg, type='error') {
 // ══════════════════════════════════════
 async function init() {
   try {
-    // ID fijo del Dr. José María Jiménez
+    // ID fijo del profesional demo
     PROFESIONAL_ID = '44c0a06d-5b6b-4756-a1bb-5942302ae6c2';
     await loadTurnosMes();
     // Cargar chips del hero desde Supabase
@@ -1283,7 +1324,7 @@ function selectSlot(time, dur, el) {
   el.classList.add('selected');
   const label = selDate.toLocaleDateString('es-AR', { weekday:'long', day:'numeric', month:'long' });
   const cap = label.charAt(0).toUpperCase() + label.slice(1);
-  document.getElementById('booking-summary-text').textContent = cap + ' · ' + time + ' hs · ' + dur + ' min · Dr. José Jiménez';
+  document.getElementById('booking-summary-text').textContent = cap + ' · ' + time + ' hs · ' + dur + ' min · Lic. Ana Torres';
   const form = document.getElementById('booking-form');
   form.classList.add('visible');
   setTimeout(() => form.scrollIntoView({ behavior:'smooth', block:'nearest' }), 100);
@@ -1312,7 +1353,7 @@ function getBloqueos() {
 function saveBloqueos(arr) { localStorage.setItem('agendado_bloqueos', JSON.stringify(arr)); }
 
 function esDiaBloqueado(fechaStr) {
-  return esFeriado(fechaStr) || getBloqueos().some(b => fechaStr >= b.desde && fechaStr <= b.hasta);
+  return esFeriado(fechaStr) || esDiaRecurrenteBloqueado(fechaStr) || getBloqueos().some(b => fechaStr >= b.desde && fechaStr <= b.hasta);
 }
 
 function renderBloqueos() {
@@ -1462,36 +1503,6 @@ function checkDiaEspecial(fecha) {
   }
 }
 
-
-// ══════════════════════════════════════
-// BLOQUEO RÁPIDO MAÑANA / TARDE
-// ══════════════════════════════════════
-function bloqueoRapido(turno) {
-  const fecha = document.getElementById('franja-fecha').value;
-  if (!fecha) { showToast('Seleccioná primero una fecha.'); return; }
-
-  // Leer horarios configurados o usar defaults
-  const hi1 = localStorage.getItem('agendado_hora_inicio') || '08:30';
-  const hf1 = localStorage.getItem('agendado_hora_fin')    || '13:00';
-  const hi2 = localStorage.getItem('agendado_hora_inicio2') || '15:30';
-  const hf2 = localStorage.getItem('agendado_hora_fin2')    || '20:00';
-
-  const desde  = turno === 'manana' ? hi1 : hi2;
-  const hasta  = turno === 'manana' ? hf1 : hf2;
-  const motivo = turno === 'manana' ? 'Mañana bloqueada' : 'Tarde bloqueada';
-  const label  = turno === 'manana' ? '🌅 mañana' : '🌆 tarde';
-
-  const arr = getFranjas();
-  // Verificar que no esté ya bloqueada esa franja ese día
-  const yaExiste = arr.some(f => f.fecha === fecha && f.desde === desde && f.hasta === hasta);
-  if (yaExiste) { showToast('Esa franja ya está bloqueada para esa fecha.'); return; }
-
-  arr.push({ fecha, desde, hasta, motivo });
-  saveFranjas(arr);
-  renderFranjas();
-  showToast('✓ ' + label + ' bloqueada (' + desde + ' – ' + hasta + ')', 'info');
-}
-
 let franjaRowCount = 1;
 
 function addFranjaRow() {
@@ -1637,7 +1648,7 @@ async function confirmBooking() {
         <div class="sd-item"><div class="sd-label">Fecha</div><div class="sd-val">${cap}</div></div>
         <div class="sd-item"><div class="sd-label">Horario</div><div class="sd-val">${selSlot} hs</div></div>
         <div class="sd-item"><div class="sd-label">Duración</div><div class="sd-val">${selDur} minutos</div></div>
-        <div class="sd-item"><div class="sd-label">Profesional</div><div class="sd-val">Dr. José Jiménez</div></div>
+        <div class="sd-item"><div class="sd-label">Profesional</div><div class="sd-val">Lic. Ana Torres</div></div>
       `;
       document.getElementById('booking-flow').style.display = 'none';
       document.getElementById('success-card').classList.add('visible');
@@ -1646,15 +1657,15 @@ async function confirmBooking() {
 
       // Generar link WhatsApp confirmación al profesional
       try {
-        const telProf = '5493816096063'; // Demo // WhatsApp Dr. Jiménez
+        const telProf = '5493815420044'; // WhatsApp Lic. Torres
         const fechaWA = selDate.toLocaleDateString('es-AR', { weekday:'long', day:'numeric', month:'long' });
         const fechaCap = fechaWA.charAt(0).toUpperCase() + fechaWA.slice(1);
-        const msgWA = '¡Hola Dr. Jiménez! Confirmé mi turno a través de Agendado.\n\n' +
+        const msgWA = '¡Hola Lic. Torres! Confirmé mi turno a través de Agendado.\n\n' +
           '👤 Nombre: ' + nombre + '\n' +
           '📅 Fecha: ' + fechaCap + '\n' +
           '⏰ Horario: ' + selSlot + ' hs (' + selDur + ' min)\n' +
           (email ? '✉️ Email: ' + email + '\n' : '') +
-          '\n¡Hasta pronto!';
+          '\n\n⚠️ *Si no podés asistir, avisanos con anticipación al +54 9 381 542-0044. ¡Gracias!*';
         const btnWA = document.getElementById('btn-wpp-confirm');
         if (btnWA) btnWA.href = 'https://wa.me/' + telProf + '?text=' + encodeURIComponent(msgWA);
       } catch(e) { console.warn('WA link error:', e); }
@@ -1670,8 +1681,8 @@ async function confirmBooking() {
         const mFin = String(totalMin % 60).padStart(2,'0');
         const gcalStart = fechaGcal + 'T' + selSlot.replace(':','') + '00';
         const gcalEnd   = fechaGcal + 'T' + hFin + mFin + '00';
-        const gcalTitle = encodeURIComponent('Turno con Dr. José María Jiménez');
-        const gcalLoc   = encodeURIComponent('Consultorios LIBERTAD, Libertad 122, Tucumán');
+        const gcalTitle = encodeURIComponent('Turno con Lic. Ana Torres');
+        const gcalLoc   = encodeURIComponent('Consultorios Centro · San Miguel de Tucumán');
         const gcalDesc  = encodeURIComponent('Turno reservado a través de Agendado.link\nContacto: +54 9 383 400-7226');
         const gcalUrl = gcalBase + '&text=' + gcalTitle + '&dates=' + gcalStart + '/' + gcalEnd + '&location=' + gcalLoc + '&details=' + gcalDesc + '&crm=POPUP&crm_minutes=1440';
         const btnGcal = document.getElementById('btn-gcal');
@@ -1704,18 +1715,16 @@ function resetFlow() {
 // ══════════════════════════════════════
 // PANEL MÉDICO
 // ══════════════════════════════════════
-function activarPanel() {
+async function activarPanel() {
   document.getElementById('panel-login').style.display = 'none';
   document.getElementById('panel-inner').style.display = 'block';
-  // Mostrar nombre en header panel
   const profNameEl = document.getElementById('panel-prof-name');
   if (profNameEl) profNameEl.style.display = 'block';
   panelYear = today.getFullYear();
   panelMonth = today.getMonth();
   panelSelDate = new Date(today.getFullYear(), today.getMonth(), today.getDate());
-  renderPanelMonthGrid();
-  loadTurnosMes_panel();
-  renderPanelDay();
+  await loadTurnosMes_panel();
+  await renderPanelDay();
   loadPacientes();
   loadPanelStats();
 }
@@ -1792,12 +1801,11 @@ let turnosPorDia = {};
 
 const panelMonthNames = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
 
-function changePanelMonth(dir) {
+async function changePanelMonth(dir) {
   panelMonth += dir;
   if (panelMonth < 0) { panelMonth = 11; panelYear--; }
   if (panelMonth > 11) { panelMonth = 0; panelYear++; }
-  renderPanelMonthGrid();
-  loadTurnosMes_panel();
+  await loadTurnosMes_panel();
 }
 
 function goToToday() {
@@ -1858,8 +1866,10 @@ function renderPanelMonthGrid() {
       btn.type = 'button';
 
       var isFeriadoPanel = esFeriado(dateStr);
-      var bg = isSelected ? 'var(--blue)' : hasTurnos && !isPast ? 'var(--blue-pale)' : isFeriadoPanel && !isPast ? 'var(--rose-pale)' : 'var(--white)';
-      var border = isSelected ? 'var(--blue)' : hasTurnos && !isPast ? 'rgba(26,79,138,.25)' : isFeriadoPanel && !isPast ? 'rgba(225,29,72,.2)' : 'var(--border)';
+      var isRecurrentePanel = esDiaRecurrenteBloqueado(dateStr);
+      var isBloqPanel = isFeriadoPanel || isRecurrentePanel;
+      var bg = isSelected ? 'var(--blue)' : hasTurnos && !isPast ? 'var(--blue-pale)' : isBloqPanel && !isPast ? 'var(--rose-pale)' : 'var(--white)';
+      var border = isSelected ? 'var(--blue)' : hasTurnos && !isPast ? 'rgba(26,79,138,.25)' : isBloqPanel && !isPast ? 'rgba(225,29,72,.2)' : 'var(--border)';
 
       btn.style.cssText = 'display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;padding:6px 2px;border-radius:10px;border:1.5px solid ' + border + ';background:' + bg + ';cursor:pointer;transition:all .2s;min-height:56px;width:100%';
 
@@ -1882,6 +1892,14 @@ function renderPanelMonthGrid() {
         fBadge.style.cssText = 'font-size:8px;font-weight:800;border-radius:6px;padding:1px 4px;line-height:1.4;background:var(--rose);color:white;letter-spacing:.3px;';
         fBadge.textContent = 'Fer.';
         btn.appendChild(fBadge);
+      }
+
+      // Recurrente badge
+      if (isRecurrentePanel && !isFeriadoPanel && !isPast && !isSelected) {
+        var rBadge = document.createElement('span');
+        rBadge.style.cssText = 'font-size:8px;font-weight:800;border-radius:6px;padding:1px 4px;line-height:1.4;background:var(--rose);color:white;letter-spacing:.3px;';
+        rBadge.textContent = 'Blq.';
+        btn.appendChild(rBadge);
       }
 
       // Turno badge
@@ -2199,10 +2217,15 @@ async function guardarNuevoTurno() {
   btn.disabled = true;
   btn.innerHTML = '<span class="spinner"></span>Guardando...';
 
-  try {
-    const d = panelSelDate || new Date(today.getFullYear(), today.getMonth(), today.getDate());
-    const fechaStr = d.toISOString().split('T')[0];
+  // Capturar fecha ANTES de cerrar el modal
+  const d = panelSelDate || new Date(today.getFullYear(), today.getMonth(), today.getDate());
+  const fechaStr = d.toISOString().split('T')[0];
+  const fechaSnap = new Date(fechaStr + 'T12:00:00');
+  const fechaLabel = fechaSnap.toLocaleDateString('es-AR', { weekday:'long', day:'numeric', month:'long' });
+  const fechaCap = fechaLabel.charAt(0).toUpperCase() + fechaLabel.slice(1);
+  const motivoTxt = motivo !== 'Sin especificar' ? '\n📋 Motivo: ' + motivo : '';
 
+  try {
     const result = await sbPost('turnos', {
       profesional_id:  PROFESIONAL_ID,
       paciente_nombre: nombre,
@@ -2212,43 +2235,46 @@ async function guardarNuevoTurno() {
       fecha:    fechaStr,
       hora:     hora + ':00',
       duracion: dur,
-      estado:   'confirmado'   // turno del médico ya confirmado
+      estado:   'confirmado'
     });
 
     if (result && result[0] && result[0].id) {
       cerrarNuevoTurno();
       await renderPanelDay();
+      await loadTurnosMes_panel();
       await loadPanelStats();
       showToast('✓ Turno guardado correctamente', 'info');
 
-      // Capturar todos los valores ANTES de cerrar el modal
-      var telLimpio = tel.replace(/[^0-9]/g, '');
-      if (!telLimpio.startsWith('54')) telLimpio = '5493816096063'; // Demo siempre a Seba
-      var fechaSnap = new Date(fechaStr + 'T12:00:00');
-      var fechaLabel = fechaSnap.toLocaleDateString('es-AR', { weekday:'long', day:'numeric', month:'long' });
-      var fechaCap = fechaLabel.charAt(0).toUpperCase() + fechaLabel.slice(1);
-      var motivoLabel = motivo !== 'Sin especificar' ? '\n📋 Motivo: ' + motivo : '';
-      var waMsg = '¡Hola ' + nombre + '! Tu turno en la demo de Agendado quedó confirmado.\n\n📅 ' + fechaCap + '\n⏰ ' + hora + ' hs (' + dur + ' min)\n📍 Consultorios LIBERTAD, Libertad 122, Tucumán' + motivoLabel + '\n\n¡Nos vemos!';
-      var waUrl = 'https://wa.me/' + telLimpio + '?text=' + encodeURIComponent(waMsg);
-      // Generar link Google Calendar para el turno asignado por el panel
+      // Generar link Google Calendar con recordatorio 24hs
+      var gcalUrl2 = '';
       try {
-        var gcalBase2 = 'https://calendar.google.com/calendar/render?action=TEMPLATE';
         var fechaGcal2 = fechaStr.replace(/-/g,'');
         var hh2 = parseInt(hora.split(':')[0]);
         var mm2 = parseInt(hora.split(':')[1]);
         var totalMin2 = hh2 * 60 + mm2 + dur;
         var hFin2 = String(Math.floor(totalMin2/60)).padStart(2,'0');
         var mFin2 = String(totalMin2%60).padStart(2,'0');
-        var gcalUrl2 = gcalBase2 +
-          '&text=' + encodeURIComponent('Turno · Demo Agendado') +
-          '&dates=' + fechaGcal2 + 'T' + hora.replace(':','') + '00/' + fechaGcal2 + 'T' + hFin2 + mFin2 + '00' +
-          '&location=' + encodeURIComponent('Consultorios LIBERTAD, Libertad 122, Tucumán') +
-          '&details=' + encodeURIComponent('Turno asignado por el Dr. Jiménez\nContacto: +54 9 383 400-7226') +
+        gcalUrl2 = 'https://calendar.google.com/calendar/render?action=TEMPLATE' +
+          '&text=' + encodeURIComponent('Turno con Lic. Torres') +
+          '&dates=' + fechaGcal2 + 'T' + hora.replace(':','') + '00/' +
+                      fechaGcal2 + 'T' + hFin2 + mFin2 + '00' +
+          '&location=' + encodeURIComponent('Consultorios Centro · San Miguel de Tucumán') +
+          '&details=' + encodeURIComponent('Turno asignado por el Lic. Torres\nContacto: +54 9 383 400-7226') +
           '&crm=POPUP&crm_minutes=1440';
-        waMsg += '\n\n📅 Agregá el turno a tu Google Calendar:\n' + gcalUrl2;
-        waUrl = 'https://wa.me/' + telLimpio + '?text=' + encodeURIComponent(waMsg);
-      } catch(e2) { console.warn('GCal panel error:', e2); }
+      } catch(ge) { console.warn('GCal error:', ge); }
 
+      // Abrir WhatsApp con todos los datos + link GCal
+      var telLimpio = tel.replace(/[^0-9]/g, '');
+      if (!telLimpio.startsWith('54')) telLimpio = '54' + telLimpio;
+      var waMsg = '¡Hola ' + nombre + '! Tu turno con el Lic. Torres quedó confirmado.' +
+        '\n\n📅 ' + fechaCap +
+        '\n⏰ ' + hora + ' hs (' + dur + ' min)' +
+        '\n📍 Consultorios Centro · San Miguel de Tucumán' +
+        motivoTxt +
+        (gcalUrl2 ? '\n\n📅 Agregalo a tu Google Calendar:\n' + gcalUrl2 : '') +
+        '\n\n⚠️ Si no podés asistir, avisanos con anticipación al +54 9 381 542-0044. ¡Gracias!' +
+        '\n\n¡Nos vemos!';
+      var waUrl = 'https://wa.me/' + telLimpio + '?text=' + encodeURIComponent(waMsg);
       setTimeout(function() { window.open(waUrl, '_blank'); }, 800);
 
     } else {
@@ -2420,7 +2446,7 @@ async function guardarEdicion() {
     const msgReprog = '¡Hola ' + editTurnoNombre + '! Te informamos que tu turno fue reprogramado.\n\n' +
       '📅 Nueva fecha: ' + fechaCap + '\n' +
       '⏰ Nuevo horario: ' + hora + ' hs\n' +
-      '📍 Consultorios LIBERTAD, Libertad 122, Tucumán\n\n' +
+      '📍 Consultorios Centro · San Miguel de Tucumán\n\n' +
       'Ante cualquier consulta escribinos por WhatsApp. ¡Hasta pronto!';
     const waUrl = 'https://wa.me/' + telLimpio + '?text=' + encodeURIComponent(msgReprog);
     setTimeout(function() { window.open(waUrl, '_blank'); }, 600);
@@ -2436,99 +2462,163 @@ async function guardarEdicion() {
 
 
 // ══════════════════════════════════════
-// DEMO MODE — Turnos de ejemplo para el calendario
+// BLOQUEO RECURRENTE POR DÍA DE SEMANA
+// ══════════════════════════════════════
+const DIAS_SEMANA_MAP = { lun:1, mar:2, mie:3, jue:4, vie:5, sab:6, dom:0 };
+const DIAS_SEMANA_LABEL = { lun:'Lunes', mar:'Martes', mie:'Miércoles', jue:'Jueves', vie:'Viernes', sab:'Sábado', dom:'Domingo' };
+
+function getBloqueoRecurrente() {
+  try { return JSON.parse(localStorage.getItem('agendado_bloqueos_recurrentes') || '[]'); } catch(e) { return []; }
+}
+function saveBloqueoRecurrente(arr) {
+  localStorage.setItem('agendado_bloqueos_recurrentes', JSON.stringify(arr));
+}
+
+function esDiaRecurrenteBloqueado(fechaStr) {
+  // Usar T12:00:00 para evitar problemas de zona horaria
+  const dt = new Date(fechaStr + 'T12:00:00');
+  const dow = dt.getDay(); // 0=dom, 1=lun, 2=mar, 3=mie, 4=jue, 5=vie, 6=sab
+  const dowMap = { 0:'dom', 1:'lun', 2:'mar', 3:'mie', 4:'jue', 5:'vie', 6:'sab' };
+  const dowKey = dowMap[dow];
+  return getBloqueoRecurrente().some(b => b.dia === dowKey);
+}
+
+function renderBloqueoRecurrente() {
+  const list = document.getElementById('disp-recurrente-list');
+  if (!list) return;
+  const arr = getBloqueoRecurrente();
+  if (!arr.length) {
+    list.innerHTML = '<div class="disp-empty">Sin bloqueos recurrentes.</div>';
+    return;
+  }
+  list.innerHTML = arr.map((b, i) => `
+    <div class="recur-item">
+      <div class="recur-day-badge">${DIAS_SEMANA_LABEL[b.dia] ? DIAS_SEMANA_LABEL[b.dia].substring(0,3).toUpperCase() : b.dia}</div>
+      <div class="recur-info">
+        <div class="recur-label">Todos los ${DIAS_SEMANA_LABEL[b.dia] || b.dia}</div>
+        ${b.motivo ? `<div class="recur-detail">${b.motivo}</div>` : ''}
+      </div>
+      <button class="recur-del" onclick="eliminarBloqueoRecurrente(${i})">✕</button>
+    </div>`).join('');
+}
+
+function agregarBloqueoRecurrente() {
+  const dia    = document.getElementById('recur-dia').value;
+  const motivo = document.getElementById('recur-motivo').value.trim();
+  const arr = getBloqueoRecurrente();
+  if (arr.some(b => b.dia === dia)) {
+    showToast('Los ' + DIAS_SEMANA_LABEL[dia] + ' ya están bloqueados.'); return;
+  }
+  arr.push({ dia, motivo });
+  saveBloqueoRecurrente(arr);
+  document.getElementById('recur-motivo').value = '';
+  renderBloqueoRecurrente();
+  renderCalendar();
+  showToast('✓ Todos los ' + DIAS_SEMANA_LABEL[dia] + ' bloqueados', 'info');
+}
+
+function eliminarBloqueoRecurrente(i) {
+  const arr = getBloqueoRecurrente();
+  arr.splice(i, 1);
+  saveBloqueoRecurrente(arr);
+  renderBloqueoRecurrente();
+  renderCalendar();
+  showToast('✓ Bloqueo recurrente eliminado', 'info');
+}
+
+
+// ══════════════════════════════════════
+// BLOQUEO RÁPIDO MAÑANA / TARDE
+// ══════════════════════════════════════
+function bloqueoRapido(turno) {
+  const fecha = document.getElementById('franja-fecha').value;
+  if (!fecha) { showToast('Seleccioná primero una fecha.'); return; }
+  const hi1 = localStorage.getItem('agendado_hora_inicio') || '08:30';
+  const hf1 = localStorage.getItem('agendado_hora_fin')    || '13:00';
+  const hi2 = localStorage.getItem('agendado_hora_inicio2') || '15:30';
+  const hf2 = localStorage.getItem('agendado_hora_fin2')    || '20:00';
+  const desde  = turno === 'manana' ? hi1 : hi2;
+  const hasta  = turno === 'manana' ? hf1 : hf2;
+  const motivo = turno === 'manana' ? 'Mañana bloqueada' : 'Tarde bloqueada';
+  const label  = turno === 'manana' ? '🌅 mañana' : '🌆 tarde';
+  const arr = getFranjas();
+  const yaExiste = arr.some(f => f.fecha === fecha && f.desde === desde && f.hasta === hasta);
+  if (yaExiste) { showToast('Esa franja ya está bloqueada para esa fecha.'); return; }
+  arr.push({ fecha, desde, hasta, motivo });
+  saveFranjas(arr);
+  renderFranjas();
+  showToast('✓ ' + label + ' bloqueada (' + desde + ' – ' + hasta + ')', 'info');
+}
+
+
+// ══════════════════════════════════════
+// DEMO MODE — Turnos de ejemplo
 // ══════════════════════════════════════
 const DEMO_MODE = true;
-
-// Turnos de ejemplo para mostrar en el panel
-const yyyy = today.getFullYear();
-const mm   = String(today.getMonth() + 1).padStart(2,'0');
-const dd   = String(today.getDate()).padStart(2,'0');
-const mañana = new Date(today); mañana.setDate(today.getDate() + 1);
-const ddm  = String(mañana.getDate()).padStart(2,'0');
+const _today = new Date();
+const _yyyy = _today.getFullYear();
+const _mm = String(_today.getMonth()+1).padStart(2,'0');
+const _dd = String(_today.getDate()).padStart(2,'0');
+const _manana = new Date(_today); _manana.setDate(_today.getDate()+1);
+const _ddm = String(_manana.getDate()).padStart(2,'0');
+const _pasado = new Date(_today); _pasado.setDate(_today.getDate()+2);
+const _ddp = String(_pasado.getDate()).padStart(2,'0');
 
 const DEMO_TURNOS = [
-  { id:'demo-1', profesional_id:'demo-agendado', paciente_nombre:'Ana García',    paciente_tel:'+54 381 555 0001', paciente_email:'ana@mail.com',    motivo:'Primera consulta / Evaluación', fecha: yyyy+'-'+mm+'-'+dd,  hora:'09:00:00', duracion:50, estado:'confirmado' },
-  { id:'demo-2', profesional_id:'demo-agendado', paciente_nombre:'Carlos López',   paciente_tel:'+54 381 555 0002', paciente_email:'carlos@mail.com', motivo:'Sesión individual',             fecha: yyyy+'-'+mm+'-'+dd,  hora:'10:00:00', duracion:50, estado:'confirmado' },
-  { id:'demo-3', profesional_id:'demo-agendado', paciente_nombre:'María Fernández',paciente_tel:'+54 381 555 0003', paciente_email:'',                motivo:'Ansiedad / Estrés',             fecha: yyyy+'-'+mm+'-'+dd,  hora:'11:00:00', duracion:50, estado:'pendiente'  },
-  { id:'demo-4', profesional_id:'demo-agendado', paciente_nombre:'Luis Rodríguez', paciente_tel:'+54 381 555 0004', paciente_email:'',                motivo:'Terapia familiar',              fecha: yyyy+'-'+mm+'-'+ddm, hora:'09:00:00', duracion:50, estado:'confirmado' },
-  { id:'demo-5', profesional_id:'demo-agendado', paciente_nombre:'Sofía Martínez', paciente_tel:'+54 381 555 0005', paciente_email:'sofia@mail.com',  motivo:'Sesión individual',             fecha: yyyy+'-'+mm+'-'+ddm, hora:'10:00:00', duracion:50, estado:'confirmado' },
+  { id:'demo-1', profesional_id:'demo-agendado', paciente_nombre:'Ana García',     paciente_tel:'+54 381 555 0001', paciente_email:'ana@mail.com',    motivo:'Primera consulta / Evaluación', fecha:_yyyy+'-'+_mm+'-'+_dd,  hora:'09:00:00', duracion:50, estado:'confirmado' },
+  { id:'demo-2', profesional_id:'demo-agendado', paciente_nombre:'Carlos López',    paciente_tel:'+54 381 555 0002', paciente_email:'',                motivo:'Sesión individual',             fecha:_yyyy+'-'+_mm+'-'+_dd,  hora:'10:00:00', duracion:50, estado:'confirmado' },
+  { id:'demo-3', profesional_id:'demo-agendado', paciente_nombre:'María Fernández', paciente_tel:'+54 381 555 0003', paciente_email:'mf@mail.com',     motivo:'Ansiedad / Estrés',             fecha:_yyyy+'-'+_mm+'-'+_dd,  hora:'11:00:00', duracion:50, estado:'pendiente'  },
+  { id:'demo-4', profesional_id:'demo-agendado', paciente_nombre:'Luis Rodríguez',  paciente_tel:'+54 381 555 0004', paciente_email:'',                motivo:'Terapia familiar',              fecha:_yyyy+'-'+_mm+'-'+_ddm, hora:'09:00:00', duracion:50, estado:'confirmado' },
+  { id:'demo-5', profesional_id:'demo-agendado', paciente_nombre:'Sofía Martínez',  paciente_tel:'+54 381 555 0005', paciente_email:'sofia@mail.com',  motivo:'Sesión individual',             fecha:_yyyy+'-'+_mm+'-'+_ddm, hora:'10:00:00', duracion:50, estado:'confirmado' },
+  { id:'demo-6', profesional_id:'demo-agendado', paciente_nombre:'Jorge Pérez',     paciente_tel:'+54 381 555 0006', paciente_email:'',                motivo:'Terapia de pareja',             fecha:_yyyy+'-'+_mm+'-'+_ddp, hora:'09:00:00', duracion:50, estado:'confirmado' },
 ];
 
-// Interceptar sbGet para devolver turnos de demo
 const _sbGetReal = sbGet;
 window.sbGet = async function(query) {
   if (DEMO_MODE) {
     if (query.includes('turnos')) {
-      // Filtrar según la query
       let result = [...DEMO_TURNOS];
-      // Filtro por fecha
       const fechaMatch = query.match(/fecha=eq\.([0-9-]+)/);
       if (fechaMatch) result = result.filter(t => t.fecha === fechaMatch[1]);
-      // Filtro por mes (gte/lte)
       const gteMatch = query.match(/fecha=gte\.([0-9-]+)/);
       const lteMatch = query.match(/fecha=lte\.([0-9-]+)/);
       if (gteMatch) result = result.filter(t => t.fecha >= gteMatch[1]);
       if (lteMatch) result = result.filter(t => t.fecha <= lteMatch[1]);
-      console.log('[DEMO] sbGet turnos:', result.length, 'resultados para', query);
       return result;
     }
     if (query.includes('profesionales')) {
-      return [{ id:'demo-agendado', nombre:'Lic. Demo', titulo:'Psicóloga Clínica', especialidad:'Psicología Clínica', matricula:'MP 0000', consultorio:'Consultorios Demo', direccion:'Tu dirección aquí', telefono:'5493816096063', email:'hola@agendado.link', otro:'', horario_inicio:'09:00:00', horario_fin:'13:00:00', dias_atencion:['lun','mar','mie','jue','vie'] }];
+      return [{ id:'demo-agendado', nombre:'Lic. Ana Torres', titulo:'Psicóloga Clínica', especialidad:'Psicología Clínica', matricula:'MP 1234', consultorio:'Consultorios Centro', direccion:'Tu dirección aquí', telefono:'5493815420044', email:'hola@agendado.link', otro:'', horario_inicio:'09:00:00', horario_fin:'13:00:00', dias_atencion:['lun','mar','mie','jue','vie'] }];
     }
     return [];
   }
   return _sbGetReal(query);
 };
 
-// Interceptar sbPost — no guardar realmente
 const _sbPostReal = sbPost;
 window.sbPost = async function(table, data) {
   if (DEMO_MODE) {
-    console.log('[DEMO] sbPost interceptado:', table, data);
-    // Agregar turno a DEMO_TURNOS temporalmente para que aparezca en el panel
     if (table === 'turnos') {
-      const nuevoTurno = { id: 'demo-' + Date.now(), profesional_id:'demo-agendado', ...data };
-      DEMO_TURNOS.push(nuevoTurno);
-      return [nuevoTurno];
+      const t = { id:'demo-'+Date.now(), profesional_id:'demo-agendado', ...data };
+      DEMO_TURNOS.push(t);
+      return [t];
     }
-    return [{ id: 'demo-' + Date.now(), ...data }];
+    return [{ id:'demo-'+Date.now(), ...data }];
   }
   return _sbPostReal(table, data);
 };
 
-// Interceptar sbPatch
 const _sbPatchReal = sbPatch;
 window.sbPatch = async function(query, data) {
   if (DEMO_MODE) {
-    console.log('[DEMO] sbPatch interceptado:', query, data);
-    // Actualizar en DEMO_TURNOS
     const idMatch = query.match(/id=eq\.([^&]+)/);
     if (idMatch) {
       const idx = DEMO_TURNOS.findIndex(t => t.id === idMatch[1]);
       if (idx > -1) Object.assign(DEMO_TURNOS[idx], data);
     }
-    return [{ ...data }];
+    return [data];
   }
   return _sbPatchReal(query, data);
 };
-
-// Interceptar sbDelete
-if (typeof sbDelete !== 'undefined') {
-  const _sbDeleteReal = sbDelete;
-  window.sbDelete = async function(query) {
-    if (DEMO_MODE) {
-      console.log('[DEMO] sbDelete interceptado:', query);
-      const idMatch = query.match(/id=eq\.([^&]+)/);
-      if (idMatch) {
-        const idx = DEMO_TURNOS.findIndex(t => t.id === idMatch[1]);
-        if (idx > -1) DEMO_TURNOS.splice(idx, 1);
-      }
-      return [];
-    }
-    return _sbDeleteReal(query);
-  };
-}
 
 // ══ INIT ══
 document.addEventListener('DOMContentLoaded', () => {
